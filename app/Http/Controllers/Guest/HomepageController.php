@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Guest;
 
 use App\Models\Users;
 use App\Http\Controllers\Controller;
-use App\User;
 
 class HomepageController extends Controller
 {

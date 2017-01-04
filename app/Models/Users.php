@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use File;
 use Illuminate\Database\Eloquent\Model;
-use ChrisKonnertz\OpenGraph\OpenGraph;
 
 class Users extends Content
 {
