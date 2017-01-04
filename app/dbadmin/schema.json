@@ -1,0 +1,588 @@
+{
+   "seeker_qualifications" : [
+      {
+         "type" : "int",
+         "name" : "seeker_qualification_id",
+         "foreign" : "seeker_qualifications",
+         "length" : "12"
+      },
+      {
+         "type" : "int",
+         "foreign" : "profiles",
+         "name" : "profile_id",
+         "length" : "11"
+      },
+      {
+         "foreign" : "qualifications",
+         "name" : "qualification_id",
+         "length" : "6",
+         "type" : "int"
+      },
+      {
+         "length" : "2",
+         "name" : "qualification_rank",
+         "type" : "int"
+      }
+   ],
+   "job_location" : [
+      {
+         "type" : "int",
+         "short" : 1,
+         "length" : "6",
+         "name" : "job_location_id"
+      },
+      {
+         "type" : "varchar",
+         "name" : "jl_address1",
+         "length" : "30"
+      },
+      {
+         "type" : "varchar",
+         "name" : "jl_address2",
+         "length" : "30"
+      },
+      {
+         "type" : "varchar",
+         "name" : "jl_city",
+         "length" : "30"
+      },
+      {
+         "type" : "varchar",
+         "length" : "30",
+         "name" : "jl_state"
+      },
+      {
+         "name" : "jl_country",
+         "length" : "2",
+         "type" : "varchar"
+      },
+      {
+         "type" : "int",
+         "name" : "jl_zipcode",
+         "length" : "9"
+      }
+   ],
+   "jobs" : [
+      {
+         "length" : "6",
+         "foreign" : "jobs",
+         "name" : "job_id",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "name" : "compensation",
+         "length" : "10"
+      },
+      {
+         "type" : "varchar",
+         "length" : "30",
+         "short" : 1,
+         "name" : "job_name"
+      },
+      {
+         "type" : "text",
+         "name" : "job_description",
+         "length" : null
+      },
+      {
+         "length" : "6",
+         "name" : "industry_id",
+         "foreign" : "industrys",
+         "type" : "int"
+      },
+      {
+         "name" : "job_type",
+         "length" : "30",
+         "type" : "varchar"
+      },
+      {
+         "length" : "6",
+         "foreign" : "compensation_types",
+         "name" : "compensation_type_id",
+         "type" : "int"
+      },
+      {
+         "type" : "varchar",
+         "length" : "20",
+         "name" : "job_class"
+      },
+      {
+         "type" : "int",
+         "length" : "6",
+         "name" : "job_location"
+      }
+   ],
+   "job_category" : [
+      {
+         "type" : "int",
+         "name" : "category_id",
+         "foreign" : "categorys",
+         "length" : "6"
+      },
+      {
+         "type" : "varchar",
+         "name" : "category_name",
+         "short" : 1,
+         "length" : "30"
+      }
+   ],
+   "seeker_profile" : [
+      {
+         "length" : "11",
+         "name" : "profile_id",
+         "foreign" : "profiles",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "foreign" : "users",
+         "name" : "user_id",
+         "length" : "11"
+      },
+      {
+         "length" : "10",
+         "name" : "zipcode",
+         "type" : "varchar"
+      },
+      {
+         "name" : "country",
+         "length" : "2",
+         "type" : "char"
+      }
+   ],
+   "accounts" : [
+      {
+         "name" : "account_id",
+         "foreign" : "accounts",
+         "length" : "11",
+         "type" : "int"
+      },
+      {
+         "type" : "varchar",
+         "length" : "80",
+         "short" : 1,
+         "name" : "name"
+      },
+      {
+         "length" : "11",
+         "name" : "owner_id",
+         "foreign" : "owners",
+         "type" : "int"
+      }
+   ],
+   "job_qualifications" : [
+      {
+         "length" : "12",
+         "foreign" : "seeker_qualifications",
+         "name" : "seeker_qualification_id",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "foreign" : "profiles",
+         "name" : "profile_id",
+         "length" : "11"
+      },
+      {
+         "type" : "int",
+         "length" : "6",
+         "foreign" : "qualifications",
+         "name" : "qualification_id"
+      },
+      {
+         "type" : "int",
+         "length" : "2",
+         "name" : "qualification_rank"
+      }
+   ],
+   "seeker_preferences" : [
+      {
+         "length" : "12",
+         "name" : "seeker_preference_id",
+         "foreign" : "seeker_preferences",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "11",
+         "foreign" : "profiles",
+         "name" : "profile_id"
+      },
+      {
+         "name" : "industry_id",
+         "foreign" : "industrys",
+         "length" : "5",
+         "type" : "int"
+      },
+      {
+         "foreign" : "fields",
+         "name" : "field_id",
+         "length" : "5",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "name" : "specialty_id",
+         "foreign" : "specialtys",
+         "length" : "5"
+      }
+   ],
+   "job_provider_profile" : [
+      {
+         "type" : "int",
+         "length" : "11",
+         "name" : "profile_id",
+         "foreign" : "profiles"
+      },
+      {
+         "type" : "int",
+         "name" : "user_id",
+         "foreign" : "users",
+         "length" : "11"
+      },
+      {
+         "type" : "varchar",
+         "length" : "10",
+         "name" : "zipcode"
+      },
+      {
+         "name" : "country",
+         "length" : "2",
+         "type" : "char"
+      },
+      {
+         "type" : "int",
+         "length" : "3",
+         "name" : "size"
+      },
+      {
+         "type" : "char",
+         "length" : "4",
+         "name" : "company_personality"
+      },
+      {
+         "foreign" : "industrys",
+         "name" : "industry_id",
+         "length" : "5",
+         "type" : "int"
+      }
+   ],
+   "users" : [
+      {
+         "type" : "int",
+         "name" : "user_id",
+         "foreign" : "users",
+         "length" : "11"
+      },
+      {
+         "type" : "varchar",
+         "length" : "80",
+         "name" : "email"
+      },
+      {
+         "name" : "password",
+         "length" : "128",
+         "type" : "char"
+      },
+      {
+         "type" : "varchar",
+         "length" : "40",
+         "short" : 1,
+         "name" : "name_first"
+      },
+      {
+         "length" : "40",
+         "short" : 1,
+         "name" : "name_middle",
+         "type" : "varchar"
+      },
+      {
+         "type" : "varchar",
+         "length" : "40",
+         "short" : 1,
+         "name" : "name_last"
+      },
+      {
+         "length" : "20",
+         "name" : "phone_primary",
+         "type" : "varchar"
+      },
+      {
+         "length" : "10",
+         "name" : "zip_code",
+         "type" : "varchar"
+      },
+      {
+         "type" : "char",
+         "name" : "country",
+         "length" : "2"
+      },
+      {
+         "type" : "int",
+         "length" : "11",
+         "name" : "permission_id",
+         "foreign" : "permissions"
+      },
+      {
+         "foreign" : "roles",
+         "name" : "role_id",
+         "length" : "11",
+         "type" : "int"
+      },
+      {
+         "length" : "3",
+         "name" : "industry",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "3",
+         "name" : "occupation"
+      },
+      {
+         "name" : "employment_status",
+         "length" : "1",
+         "type" : "int"
+      },
+      {
+         "length" : "1",
+         "name" : "searching_status",
+         "type" : "int"
+      },
+      {
+         "name" : "personality_status",
+         "length" : "1",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "1",
+         "name" : "education_status"
+      },
+      {
+         "type" : "int",
+         "length" : "1",
+         "name" : "proficiency_status"
+      },
+      {
+         "type" : "int",
+         "length" : "1",
+         "name" : "preference_status"
+      },
+      {
+         "name" : "system_status",
+         "length" : "5",
+         "type" : "int"
+      },
+      {
+         "length" : null,
+         "name" : "status_timestamp",
+         "type" : "timestamp"
+      }
+   ],
+   "skillz" : [
+      {
+         "type" : "int",
+         "length" : "6",
+         "name" : "skill_id",
+         "foreign" : "skills"
+      },
+      {
+         "type" : "varchar",
+         "length" : "30",
+         "short" : 1,
+         "name" : "skill_name"
+      },
+      {
+         "foreign" : "industrys",
+         "name" : "industry_id",
+         "length" : "6",
+         "type" : "int"
+      },
+      {
+         "type" : "text",
+         "length" : null,
+         "name" : "skill_description"
+      }
+   ],
+   "job_profile" : [
+      {
+         "type" : "int",
+         "name" : "job_profile_id",
+         "length" : "6",
+         "short" : 1
+      },
+      {
+         "type" : "int",
+         "length" : "6",
+         "name" : "job_id",
+         "foreign" : "jobs"
+      },
+      {
+         "foreign" : "job_locations",
+         "name" : "job_location_id",
+         "length" : "6",
+         "type" : "int"
+      },
+      {
+         "length" : "2",
+         "name" : "job_years_of_exp",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "7",
+         "name" : "job_min_pay"
+      },
+      {
+         "name" : "job_max_pay",
+         "length" : "10",
+         "type" : "int"
+      },
+      {
+         "length" : null,
+         "name" : "job_due",
+         "type" : "timestamp"
+      },
+      {
+         "name" : "job_principals_only",
+         "length" : "1",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "6",
+         "foreign" : "job_providers",
+         "name" : "job_provider_id"
+      }
+   ],
+   "contacts" : [
+      {
+         "foreign" : "contacts",
+         "name" : "contact_id",
+         "length" : "11",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "11",
+         "name" : "user_id",
+         "foreign" : "users"
+      },
+      {
+         "type" : "varchar",
+         "length" : "80",
+         "short" : 1,
+         "name" : "name"
+      },
+      {
+         "name" : "box",
+         "length" : "20",
+         "type" : "varchar"
+      },
+      {
+         "type" : "varchar",
+         "name" : "street",
+         "length" : "80"
+      },
+      {
+         "type" : "char",
+         "name" : "state",
+         "length" : "2"
+      },
+      {
+         "type" : "char",
+         "length" : "2",
+         "name" : "country"
+      },
+      {
+         "length" : "10",
+         "name" : "zip",
+         "type" : "varchar"
+      },
+      {
+         "type" : "varchar",
+         "name" : "phone",
+         "length" : "30"
+      },
+      {
+         "name" : "email",
+         "length" : "80",
+         "type" : "varchar"
+      }
+   ],
+   "roles" : [
+      {
+         "foreign" : "roles",
+         "name" : "role_id",
+         "length" : "11",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "11",
+         "name" : "user_id",
+         "foreign" : "users"
+      },
+      {
+         "type" : "int",
+         "length" : "11",
+         "name" : "parent_role_id",
+         "foreign" : "parent_roles"
+      },
+      {
+         "name" : "name",
+         "length" : "40",
+         "short" : 1,
+         "type" : "varchar"
+      },
+      {
+         "type" : "int",
+         "name" : "permissions",
+         "length" : "11"
+      }
+   ],
+   "permissions" : [
+      {
+         "name" : "permission_id",
+         "foreign" : "permissions",
+         "length" : "11",
+         "type" : "int"
+      },
+      {
+         "type" : "int",
+         "length" : "1",
+         "name" : "js"
+      },
+      {
+         "type" : "int",
+         "name" : "jp",
+         "length" : "1"
+      },
+      {
+         "name" : "admin",
+         "length" : "1",
+         "type" : "int"
+      },
+      {
+         "name" : "sales",
+         "length" : "1",
+         "type" : "int"
+      }
+   ],
+   "Industry" : [
+      {
+         "length" : "6",
+         "name" : "industry_id",
+         "foreign" : "industrys",
+         "type" : "int"
+      },
+      {
+         "short" : 1,
+         "length" : "30",
+         "name" : "industry_name",
+         "type" : "varchar"
+      }
+   ]
+}

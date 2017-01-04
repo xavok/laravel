@@ -1,0 +1,78 @@
+.header{
+	width:100%;
+	nfloat:left;
+	display:table;
+	margin:10px;
+}
+
+.footer{
+	width:100%;
+	float:left;
+	margin:10px;
+}
+
+.loginbox{
+	float:right;
+	margin:10px;
+}
+
+.fullwide{
+	width:100%;
+	border:solid 1px;
+	nfloat:left;
+	display:table;
+}
+
+.break{
+	width:100%;
+	float:left;
+}
+
+.leftbar{
+	width:20%;
+	nfloat:left;
+	display:table-cell;
+	border:solid 1px;
+	padding:10px;
+}
+
+.selectedrecord{
+	nmargin-left:auto;
+	margin-right:auto;
+	width:54%;
+	nfloat:right;
+	display:table-cell;
+	border:solid 1px;
+	padding:10px;
+}
+
+.bottombar{
+	width:100%;
+	float:left;
+	ndisplay:table;
+	border:solid 1px;
+	npadding:10px;
+	nmargin-right:10px;
+}
+
+.bottombarin{
+	padding:10px;
+}
+
+.listrow{
+	
+}
+
+.rowselected{
+	background: #ffff88;
+}
+
+.recordrow{
+
+}
+
+.searchfield{
+	float:left;
+	margin:5px;
+	margin-right:20px;
+}
