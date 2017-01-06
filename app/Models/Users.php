@@ -11,13 +11,13 @@ class Users extends Content
     protected $contentId = 'page';
 //    protected $appends = ['identifier', 'callouts', 'videos', 'carousels'];
 
-//    protected $fillable = [
-//        'title',
-//        'slug',
-//        'template',
-//        'meta_title',
-//        'meta_description',
-//    ];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'username',
+        'email',
+        'password',
+    ];
 
     public function getEmail(){
         return $this->email;

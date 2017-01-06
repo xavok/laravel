@@ -4,8 +4,8 @@ $(window).load(function () {
 
   $("#signup_form").validate({
     rules   : {
-      name_first      : "required",
-      name_last       : "required",
+      first_name      : "required",
+      last_name       : "required",
       email           : {
         //checkExists: true,
         required   : true
@@ -17,12 +17,12 @@ $(window).load(function () {
       confirm_password: {
         required : true,
         minlength: 5,
-        equalTo  : "#password"
+        // equalTo  : "#password"
       }
     },
     messages: {
-      name_first      : "Please enter your First Name",
-      name_last       : "Please enter your Last Name",
+      first_name      : "Please enter your First Name",
+      last_name       : "Please enter your Last Name",
       password        : {
         required : "Please provide a password",
         minlength: "Your password must  at least 5 characters long"
@@ -30,7 +30,7 @@ $(window).load(function () {
       confirm_password: {
         required : "Please provide a password",
         minlength: "Your password must be at least 5 characters long",
-        equalTo  : "Please enter the same password as above"
+        // equalTo  : "Please enter the same password as above"
       }
     }
 
