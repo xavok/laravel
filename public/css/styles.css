@@ -2,470 +2,509 @@
 ****MAIN*******
 **************/
 .center {
-	text-align: center;
+    text-align: center;
 }
 
 #cultural_form {
-	width: 80%;
-	margin: auto;
+    width: 80%;
+    margin: auto;
 }
-select{
-	width: 100px;
-	text-overflow: ellipsis;
+
+select {
+    width: 100px;
+    text-overflow: ellipsis;
 }
+
 body {
-	/*margin: 0;
-	padding: 0;
-	background-color: grey;*/
+    /*margin: 0;
+    padding: 0;
+    background-color: grey;*/
 }
+
 body {
-	/*background: url(../images/blurry-abstract-backgrounds-wallpapers.jpg);*/
+    /*background: url(../images/blurry-abstract-backgrounds-wallpapers.jpg);*/
 }
+
 header {
-	background-color: red;
-	width: 100%;
-	height: 50px;
-	text-align: center;
-	font-size: 30px;
-	text-shadow: 2px 2px  2px #FFF;
+    background-color: red;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 2px 2px 2px #FFF;
 }
+
 hr {
-	width: 70%;
+    width: 70%;
 }
- .errors {
- 	color: blue;
- 	font-size: 30px;
- }
-.page-container{
-	 padding-bottom: 20px;
+
+.errors {
+    color: blue;
+    font-size: 30px;
+}
+
+.page-container {
+    padding-bottom: 20px;
 }
 
 /****************
 *****GENERAL*****
 ****************/
 .txtCenter {
-	text-align: center;
+    text-align: center;
 }
+
 .floatRight {
-	display: inline-block;
-	float: right;
+    display: inline-block;
+    float: right;
 }
 
 .col-xs-4, .col-xs-7 {
-	margin:0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 /*****************
 *****Profile******
 *****************/
-.pageBG{
-	/*background-color: grey;*/
+.pageBG {
+    /*background-color: grey;*/
 }
 
-.navbar-inverse .navbar-brand.txtRed{
-	color: #FF0000;
+.navbar-inverse .navbar-brand.txtRed {
+    color: #FF0000;
 }
 
-.navbar-inverse .navbar-brand.txtRed:hover{
-	color: #FFF;
+.navbar-inverse .navbar-brand.txtRed:hover {
+    color: #FFF;
 }
+
 /*****************
 *****NAV BAR******
 *****************/
-.floatRight > ul.nav-pills{
-	border-radius: 0;
+.floatRight > ul.nav-pills {
+    border-radius: 0;
 }
+
 /******************
 ***LOGIN***********
 ******************/
-.loginModal{
-	position: initial;
+.loginModal {
+    position: initial;
 }
-.loginModal .modal-dialog{
+
+.loginModal .modal-dialog {
 
 }
-.loginModal .modal-dialog .modal-body > div:first-child{
-	border-right: 1px solid black;
+
+.loginModal .modal-dialog .modal-body > div:first-child {
+    border-right: 1px solid black;
 }
+
 /******************
 ***PROFILE DIVS****
 ******************/
 
-.button-profile-area{
-	width: 100%;
-	height: auto;
-	margin-left: 5%;
+.button-profile-area {
+    width: 100%;
+    height: auto;
+    margin-left: 5%;
 }
+
 #personal_info, #Education, #work_experience, #Skills, #cultural {
-	/*width: 50%;*/
-	height: auto;
-	background-color: white;
-	margin-top: 10px;
-	margin-right: 20px;
-	border-top-right-radius: 30px;
-	border-bottom-left-radius: 30px;
-	padding: 1px 20px 20px;
+    /*width: 50%;*/
+    height: auto;
+    background-color: white;
+    margin-top: 10px;
+    margin-right: 20px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 1px 20px 20px;
 }
+
 .page-profile #personal_info h3, .page-profile #Education h3, .page-profile #work_experience h3, .page-profile #Skills h3, #cultural h3 {
-	color: #ff0000;
-	font-weight: bold;
+    color: #ff0000;
+    font-weight: bold;
 }
 
 .page-profile #personal_info .input-group, .page-profile #Education .input-group, .page-profile #work_experience .input-group, page-profile #Skills .input-group {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 /*******************
 *PERSONAL INFO FORM*
 *******************/
 
-
 /*****************
 *****EDUCATION****
 *****************/
-#education select, #work_experience select{
-	width: 80%;
-	display: inline;
+#education select, #work_experience select {
+    width: 80%;
+    display: inline;
 }
-
 
 /******************
 *****SKILLS********
 ******************/
 #Skills {
-	padding-bottom: 200px;
+    padding-bottom: 200px;
 }
+
 #Skills input {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 /*****************
 Cultular
 *****************/
 #cultural_form .ui-accordion-content {
-	padding: 5px;
+    padding: 5px;
 }
+
 #cultural_form .ui-accordion-content table.table th:first-of-type {
-	width: 50%;
+    width: 50%;
 }
+
 .choises p {
-	width: 50%;
-	float:left;
-	font-size:13px;
+    width: 50%;
+    float: left;
+    font-size: 13px;
 }
+
 #cultural_form .choises input {
-	width:15%;
+    width: 15%;
 }
+
 /*****************
 **Buttons*********
 *****************/
 .buttonPrevious, .buttonNext, .buttonSubmit {
-	float: left;
-	margin-top: 10px;
+    float: left;
+    margin-top: 10px;
 }
+
 .buttonNext, .buttonSubmit {
-	/*margin-left: 300px;*/
-	float: right;
+    /*margin-left: 300px;*/
+    float: right;
 }
 
 .user_profile, .job_profile {
-	text-align: center;
+    text-align: center;
 }
-
 
 /*****************
 **Register*********
 *****************/
 
 .page-profile .profile-ul li {
-	background-color: rgb(142, 102, 102);
-	border: 1px solid black;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	padding: 5px;
-	height: 46px;
- 	padding-top: 7%;
- 	font-size: 20px;
+    background-color: rgb(142, 102, 102);
+    border: 1px solid black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 5px;
+    height: 46px;
+    padding-top: 7%;
+    font-size: 20px;
 }
-.page-profile .profile-ul li:first-child{
-	margin-top: 50px;
+
+.page-profile .profile-ul li:first-child {
+    margin-top: 50px;
 }
+
 .page-profile .profile-ul li.selected {
-	background-color: white;
+    background-color: white;
 }
 
+@media all and (max-width: 991px) {
+    .button-profile-area {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
 
-@media all and (max-width: 991px){
-	.button-profile-area{
-		width: 100%;
-		height: auto;
-		margin-left: 0;
-	}
-	#buttonNext, #buttonSubmit {
-		float: right;
-		margin-right: 20px;
-	}
+    #buttonNext, #buttonSubmit {
+        float: right;
+        margin-right: 20px;
+    }
 }
- #work_experience select {
- 	width: 100%;
- }
- .page-profile #personal_info .input-group, .page-profile #Education .input-group, .page-profile #work_experience .input-group, page-profile #Skills .input-group {
- 	margin-top: 0;
- }
- #personal_info_form label {
- 	margin-top: 10px;
- }
 
- .candidate-page {
-	 width: 70%;
-	 height: 100%;
-	 box-shadow: 1px 1px 10px 2px #000;
-	 padding: 10px;
-	 margin: 0 auto;
- }
+#work_experience select {
+    width: 100%;
+}
+
+.page-profile #personal_info .input-group, .page-profile #Education .input-group, .page-profile #work_experience .input-group, page-profile #Skills .input-group {
+    margin-top: 0;
+}
+
+#personal_info_form label {
+    margin-top: 10px;
+}
+
+.candidate-page {
+    width: 70%;
+    height: 100%;
+    box-shadow: 1px 1px 10px 2px #000;
+    padding: 10px;
+    margin: 0 auto;
+}
+
 .candidate-page .page-header {
-	text-shadow: 1px 1px 1px #000;
-	color: #bc0b0b;
-	border-bottom: 3px solid #000;
+    text-shadow: 1px 1px 1px #000;
+    color: #bc0b0b;
+    border-bottom: 3px solid #000;
 }
+
 .candidate-page h3 {
-	background-color: #E6E6E6;
-	padding: 5px;
+    background-color: #E6E6E6;
+    padding: 5px;
 }
 
 /************
 ***NEW CSS***
 ************/
 .navbar-inverse .navbar-brand {
-	color: red;
-	font-family: Impact;
-	font-size: 2em;
+    color: red;
+    font-family: Impact;
+    font-size: 2em;
 }
 
-.navbar-inverse	{
-	color: white;
+.navbar-inverse {
+    color: white;
 }
 
 .navbar {
-	border-radius: 0;
-	padding: 1em;
+    border-radius: 0;
+    padding: 1em;
 }
+
 .row {
-	padding-top: 1.5em;
+    padding-top: 1.5em;
 }
 
 .well {
-	background-color: white;
+    background-color: white;
 }
 
-.well:hover	{
-	background-color: #d3d3d3;
+.well:hover {
+    background-color: #d3d3d3;
 }
 
-.well h2	{
-	text-align: center;
-	margin: auto;
+.well h2 {
+    text-align: center;
+    margin: auto;
 }
 
 body {
-	margin: 0em 1em;;
+    margin: 0em 1em;;
 }
 
 /*img {*/
-	/*width: 100%;*/
-	/*height: auto;*/
+/*width: 100%;*/
+/*height: auto;*/
 /*}*/
 
 .footer {
-	background-color: black;
-	color: #9D9D9D;
-	padding-top: 1em;
-	padding-bottom: 0.5em;
-	padding-left: 1em;
+    background-color: black;
+    color: #9D9D9D;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
 }
 
-#revolution	{
-	height: 100%;
-	/*width: 70%;*/
-	margin: auto;
+#revolution {
+    height: 100%;
+    /*width: 70%;*/
+    margin: auto;
 }
 
 #seekers {
-	height: 100%;
-	/*width: 70%;*/
-	margin: auto;
+    height: 100%;
+    /*width: 70%;*/
+    margin: auto;
 }
 
 #companies {
-	height: 100%;
-	/*width: 70%;*/
-	margin: auto;
+    height: 100%;
+    /*width: 70%;*/
+    margin: auto;
 }
 
 #about {
-	height: 100%;
-	width: 80%;
-	margin: auto;
+    height: 100%;
+    width: 80%;
+    margin: auto;
 }
 
 #contact {
-	height: 100%;
-	width: 80%;
-	margin: auto;
-}
-.error {
-	color: red;
-}
-.seekersH {
-	text-align: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
 }
 
+.error {
+    color: red;
+}
+
+.seekersH {
+    text-align: center;
+}
 
 .revolutionH {
-	text-align: center;
+    text-align: center;
 }
 
 .seekersH {
-	text-align: center;
+    text-align: center;
 }
 
-.companiesH	{
-	text-align: center;
+.companiesH {
+    text-align: center;
 }
 
-.aboutH	{
-	text-align: center;
+.aboutH {
+    text-align: center;
 }
 
 .contactH {
-	text-align: center;
+    text-align: center;
 }
 
 /*****************
 COMMAND CENTER CSS
 *****************/
 
-
-
-.panel-title1 h2 			{
-	display: inline;
-	margin-right: 5%;
+.panel-title1 h2 {
+    display: inline;
+    margin-right: 5%;
 }
 
-.table 		{
-	text-align: left;
+.table {
+    text-align: left;
 }
 
-.checkbox	{
-	margin: 0px;
+.checkbox {
+    margin: 0px;
 }
 
-.panel-body 		{
-	text-align: left;
-	height: 25em;
+.panel-body {
+    text-align: left;
+    height: 25em;
 }
 
 #seeker_preference .panel-body {
-	height: 100%;
+    height: 100%;
 }
 
-.panel-body3 	{
-	text-align: left;
-	height: 15em;
-	margin: 1em;
+.panel-body3 {
+    text-align: left;
+    height: 15em;
+    margin: 1em;
 }
 
-.commandCenter img 		{
-	width: 27em;
-	border: 2px solid black;
-	border-radius: 1em;
+.commandCenter img {
+    width: 27em;
+    border: 2px solid black;
+    border-radius: 1em;
 }
 
-p 		{
-	margin-left: 1.5em;
+p {
+    margin-left: 1.5em;
 }
 
-.container-fluid	{
-	width: 90%;
-	margin: auto;
-}
-#seeker_preference .panel-title 		{
-	font-size: 1em;
-	text-align: left;
+.container-fluid {
+    width: 90%;
+    margin: auto;
 }
 
-.panel-title 		{
-	font-size: 2em;
-	text-align: center;
+#seeker_preference .panel-title {
+    font-size: 1em;
+    text-align: left;
 }
 
-.panel-primary .panel-heading 		{
-	background-color: #3f3f3f;
-	color: white;
+.panel-title {
+    font-size: 2em;
+    text-align: center;
 }
 
-.panel-default .panel-heading 		{
-	background-color: #3f3f3f;
-	color: white;
+.panel-primary .panel-heading {
+    background-color: #3f3f3f;
+    color: white;
 }
 
-.mail 		{
-	background-color: red;
-	color: white;
+.panel-default .panel-heading {
+    background-color: #3f3f3f;
+    color: white;
 }
 
-.great 		{
-	background-color: green;
-	color: white;
+.mail {
+    background-color: red;
+    color: white;
 }
 
-.ok			{
-	background-color: yellow;
+.great {
+    background-color: green;
+    color: white;
 }
 
-.good 		{
-	background-color: lime;
+.ok {
+    background-color: yellow;
+}
+
+.good {
+    background-color: lime;
 }
 
 /********
 Chosing Side page
 ********/
-#seeker_preference a{
-	text-decoration: none;
+#seeker_preference a {
+    text-decoration: none;
 }
+
 #choseSide h2 {
-	/*display: inline;*/
-	/*padding: 10px;*/
-	text-align: center;
-	line-height: 300px;
-	color: rgb(189, 170, 170);
-	font-size: 50px;
-	background-color: rgb(252, 255, 252);
-	text-shadow: rgb(3, 3, 3) 4px 4px 4px;
-	border: solid 1px #000;
-	border-radius: 25px;
-	height: 300px;
+    /*display: inline;*/
+    /*padding: 10px;*/
+    text-align: center;
+    line-height: 300px;
+    color: rgb(189, 170, 170);
+    font-size: 50px;
+    background-color: rgb(252, 255, 252);
+    text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+    border: solid 1px #000;
+    border-radius: 25px;
+    height: 300px;
 
 }
+
 #hiring #choseSide {
-	opacity: 0.5;
+    opacity: 0.5;
 }
+
 #hiring a {
-	pointer-events: none;
-	cursor: default;
+    pointer-events: none;
+    cursor: default;
 }
+
 #orangeBox {
-	background: #f90;
-	color: #fff;
-	font-family: 'Helvetica', 'Arial', sans-serif;
-	font-size: 2em;
-	font-weight: bold;
-	text-align: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 5px;
+    background: #f90;
+    color: #fff;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
 }
+
 .verticalLine {
-	text-align: center;
-	height: 300px;
-	border-right:  5px solid #000;
-	width: 50%;
+    text-align: center;
+    height: 300px;
+    border-right: 5px solid #000;
+    width: 50%;
+}
+
+.panel-body .chosen-container-single .chosen-single {
+    height: 30px;
+    border-radius: 0;
 }

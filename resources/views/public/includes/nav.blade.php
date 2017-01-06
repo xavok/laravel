@@ -5,17 +5,17 @@
             <ul class="nav navbar-nav">
                 <li id="logo"><a href="index.php"><img src="{{ URL::asset('img/newLogoImg.jpg') }}" alt="log pic"></a>
                 </li>
-                <li><a href="#revolution">Hiring Revolution</a></li>
-                <li><a href="#seekers">Job Seekers</a></li>
-                <li><a href="#companies">Hiring Companies</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="{{URL::route('guest::home')}}#revolution">Hiring Revolution</a></li>
+                <li><a href="{{URL::route('guest::home')}}#seekers">Job Seekers</a></li>
+                <li><a href="{{URL::route('guest::home')}}#companies">Hiring Companies</a></li>
+                <li><a href="{{URL::route('guest::home')}}#about">About Us</a></li>
+                <li><a href="{{URL::route('guest::home')}}#contact">Contact Us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::user())
-                    <li><a href="./seekerPreferences.php"><span class="glyphicon glyphicon-log-in"></span>
+                    <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
                             Preferences</a></li>
-                    <li><a href="./seekerPortal.php">My Q-portal</a></li>
+                    <li><a href="./profile">Profile</a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 @else
                     <li><a href="/register"><span

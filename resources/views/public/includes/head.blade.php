@@ -14,3 +14,4 @@
 <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.theme.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/preferences.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/chosen.css') }}">

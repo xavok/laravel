@@ -16,7 +16,7 @@
 Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
 
     Route::get('/', [
-        'as' => 'welcome',
+        'as' => 'home',
         'uses' => 'HomepageController@index'
     ]);
 
@@ -38,5 +38,15 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
     Route::post('/register', [
         'as' => 'register',
         'uses' => 'HomepageController@register',
+    ]);
+
+    Route::get('/profile', [
+        'as' => 'profile',
+        'uses' => 'ProfileController@index',
+    ]);
+
+    Route::get('/onboarding/{form}', [
+        'as' => 'onboarding',
+        'uses' => 'OnboardingController@index',
     ]);
 });

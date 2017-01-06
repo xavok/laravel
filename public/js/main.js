@@ -1,5 +1,5 @@
 $(window).load(function () {
-
+  $(".chosen-select").chosen()
   $("#login_form").validate();
 
   $("#signup_form").validate({
