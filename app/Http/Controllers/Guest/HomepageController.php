@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
@@ -11,6 +12,7 @@ use App\Models\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Seeker_Profile;
 
 class HomepageController extends Controller
 {
@@ -73,13 +75,24 @@ class HomepageController extends Controller
                     ->withErrors($validator)// send back all errors to the login form
                     ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
             } else {
+                //adding user
                 $user = new Users();
                 $email = $request->get('email');
                 $password = $request->get('password');
-                $user->fill($request->all());
+                $user->email = $email;
                 $user->password = Hash::make($password);
                 $user->save();
                 Auth::attempt(['email' => $email, 'password' => $password]);
+
+                //adding seeker profile for user
+                $profile = new Seeker_Profile();
+                $profile->user_id = $user->id;
+                $profile->first_name = $request->get('first_name');
+                $profile->last_name = $request->get('last_name');
+                $profile->last_matched = Carbon::now();
+                $profile->should_be_matched = 0;
+                $profile->save();
+                return Redirect::route('guest::onboarding::about-you', array('page' => 'about-you'));
 
             }
         } else {

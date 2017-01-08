@@ -27,11 +27,6 @@
                                    type="input">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputLasrName">Username</label>
-                            <input class="form-control" id="username" name="username" placeholder="Enter username"
-                                   type="input">
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input class="form-control" id="email" name="email" placeholder="Enter email" type="email">
                         </div>

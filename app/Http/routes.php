@@ -45,8 +45,30 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
         'uses' => 'ProfileController@index',
     ]);
 
-    Route::get('/onboarding/{form}', [
+    Route::get('/onboarding/about-you', [
         'as' => 'onboarding',
         'uses' => 'OnboardingController@index',
     ]);
+    Route::group([  'prefix' => 'onboarding', 'as' => 'onboarding::', ], function() {
+        Route::get('/about-you', [
+            'as' => 'about-you',
+            'uses' => 'OnboardingController@index',
+        ]);
+
+        Route::post('/about-you', [
+            'as' => 'about-you',
+            'uses' => 'OnboardingController@index',
+        ]);
+
+        Route::get('/occupation', [
+            'as' => 'occupation',
+            'uses' => 'OnboardingController@occupation',
+        ]);
+
+        Route::post('/occupation', [
+            'as' => 'occupation',
+            'uses' => 'OnboardingController@occupation',
+        ]);
+    });
+
 });

@@ -1,19 +1,6 @@
-@extends('public.layouts.master')
-
-@section('content')
-    <div id="seeker_preference">
-        <div class="container-fluid">
-            <div class="progress">
-                <div id="bar" class="progress-bar progress-bar-success"
-                     role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 0%;">
-                    0%
-                </div>
-            </div>
-
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form method="post" action="#" id="personal_info_form">
+                    <form method="post" id="personal_info_form">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" id="id"/>
                         <h1>Personal Info</h1>
@@ -59,9 +46,10 @@
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker "
                                                                   aria-hidden="true"></span></span>
-                            <select class="chosen-select form-control" name="country" id="city">
+                            <select class="chosen-select form-control" name="country_id" id="city">
                                 @foreach($countries as $country)
-                                    <option value="{{$country->id}}" @if($country->id == 840) selected @endif>{{$country->full_name}}</option>
+                                    <option value="{{$country->id}}"
+                                            @if( !empty($address) && $country->id == $address->country_id) selected @endif >{{$country->full_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -70,25 +58,22 @@
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon  glyphicon-map-marker "
                                                                   aria-hidden="true"></span></span>
-                            <input type="text" class="form-control" name="zip_code" placeholder="9518"
-                                   aria-describedby="basic-addon1" id="zip" required>
+                            <input type="text" class="form-control" name="zip" placeholder="9518"
+                                   aria-describedby="basic-addon1" id="zip" value="@if(!empty($address->zip)){{$address->zip}}@endif" required>
                         </div>
 
                         <label for="exampleInputEmail1">Phone</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-phone "
                                                                   aria-hidden="true"></span></span>
-                            <input type="phone" class="form-control" name="phone_primary" placeholder="555-555-5555"
-                                   aria-describedby="basic-addon1" id="phone">
+                            <input type="phone" class="form-control" name="phone" placeholder="555-555-5555"
+                                   aria-describedby="basic-addon1" id="phone" value="@if(!empty($phone->phone_number)){{$phone->phone_number}}@endif">
                         </div>
 
                         <div class=" input-group" style="width: 100%;">
-                            <input type="submit" value="Next" name="PIsubmit" class="btn btn-default buttonNext"
+                            <input type="submit" value="Next" class="btn btn-default buttonNext"
                                    id="submit_personal_info">
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-@endsection
