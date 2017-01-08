@@ -69,6 +69,16 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
             'as' => 'occupation',
             'uses' => 'OnboardingController@occupation',
         ]);
+
+        Route::get('/industry', [
+            'as' => 'industry',
+            'uses' => 'OnboardingController@industry',
+        ]);
+
+        Route::post('/industry', [
+            'as' => 'industry',
+            'uses' => 'OnboardingController@industry',
+        ]);
     });
 
 });

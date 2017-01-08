@@ -13,6 +13,8 @@
 
             @if($page == 'about-you')
                 @include('public.pages.forms.about-you')
+            @elseif($page == 'industry')
+                @include('public.pages.forms.industry')
             @elseif($page == 'occupation')
                 @include('public.pages.forms.occupation')
             @endif

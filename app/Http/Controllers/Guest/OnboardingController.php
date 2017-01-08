@@ -10,15 +10,14 @@ namespace App\Http\Controllers\Guest;
 
 use App\Models\Addresses;
 use App\Models\Countries;
+use App\Models\Industries;
 use App\Models\Phones;
-use App\User;
+use App\Models\Seeker\SeekerIndustry;
+use App\Models\Seeker\SeekerProfile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Validator;
 use Illuminate\Http\Request;
-use App\Models\Users;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -28,70 +27,112 @@ class OnboardingController extends Controller
     public function index(Request $request)
     {
         if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
             if ($request->isMethod('post')) {
-                $user_id = Auth::user()->id;
                 $country_id = $request->get('country_id');
                 $zip = $request->get('zip');
                 $phone_number = $request->get('phone');
-                $user = Users::findOrFail($user_id);
-                $user->first_name = $request->get('first_name');
-                $user->last_name = $request->get('last_name');
-                $user->save();
-                $address = Addresses::where('user_id', $user_id)->first();
-                if($address->count()) {
+                $profile->first_name = $request->get('first_name');
+                $profile->last_name = $request->get('last_name');
+                $profile->save();
+                $address = Addresses::where('profile_id', $profile_id)->first();
+                if (!empty($address)) {
                     $address->country_id = $country_id;
                     $address->zip = $zip;
                 } else {
                     $address = new Addresses();
                     $address->country_id = $country_id;
                     $address->zip = $zip;
-                    $address->user_id=$user_id;
+                    $address->profile_id = $profile_id;
                 }
                 $address->save();
 
-                $phone = Phones::where('user_id', $user_id)->first();
-                if($phone->count()) {
+                $phone = Phones::where('profile_id', $profile_id)->first();
+                if (!empty($phone)) {
                     $phone->phone_number = $phone_number;
                 } else {
                     $phone = new Phones();
                     $phone->phone_number = $phone_number;
-                    $phone->user_id =$user_id;
+                    $phone->profile_id = $profile_id;
                 }
                 $phone->save();
 
-                return Redirect::route('guest::onboarding::occupation', array('page' => 'occupation'));
+                return Redirect::route('guest::onboarding::industry');
             } else {
-                $user = Users::findOrFail(Auth::user()->id);
                 $countries = Countries::orderByRaw("id='840' desc")->get();
-                $address = $user->address;
-                $phone = $user->phone;
+                $address = $profile->address;
+                $phone = $profile->phone;
                 return view('public.pages.preferences', [
-                    'user' => $user,
+                    'profile' => $profile,
                     'countries' => $countries,
                     'address' => $address,
                     'phone' => $phone,
-                    'page'=> 'about-you'
+                    'page' => 'about-you'
                 ]);
             }
         } else {
-            return view('public.pages.homepage');
+            return Redirect::route('guest::home');
+        }
+    }
+
+    public function industry(Request $request)
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
+            if ($request->isMethod('post')) {
+                for ($i = 0; $i < count($request->get('industry_id')); $i++) {
+                    $id = $request->get('id')[$i];
+                    $seekerIndustry = SeekerIndustry::where('id', $id)->first();
+                    if (!empty($seekerIndustry)) {
+                        $industry_id = $request->get('industry_id')[$i];
+                        $industry_exist = SeekerIndustry::where('id', '!=', $id)->where('industry_id', $industry_id)->first();
+                        if (!empty($industry_exist)) {
+                            $request->session()->flash('alert-danger', 'You can not add same industry more than once.');
+                            return Redirect::route('guest::onboarding::industry');
+                        } else {
+                            $seekerIndustry->industry_id = $request->get('industry_id')[$i];
+                            $seekerIndustry->years = $request->get('industry_years')[$i];
+                        }
+                    } else {
+                        $seekerIndustry = new SeekerIndustry();
+                        $seekerIndustry->industry_id = $request->get('industry_id')[$i];
+                        $seekerIndustry->years = $request->get('industry_years')[$i];
+                        $seekerIndustry->profile_id = $profile_id;
+                    }
+                    $seekerIndustry->save();
+                }
+                return Redirect::route('guest::onboarding::occupation');
+            } else {
+                $industries = Industries::all();
+                $seekerIndustries = SeekerIndustry::where('profile_id', $profile_id)->get();
+                return view('public.pages.preferences', [
+                    'industries' => $industries,
+                    'seekerIndustries' => $seekerIndustries,
+                    'page' => 'industry'
+                ]);
+            }
+        } else {
+            return Redirect::route('guest::home');
         }
     }
 
     public function occupation(Request $request)
     {
         if (Auth::check()) {
+            $user_id = Auth::user()->id;
             if ($request->isMethod('post')) {
-                $user_id = Auth::user()->id;
-                return Redirect::route('guest::onboarding::occupation', array('page' => 'occupation'));
+                return Redirect::route('guest::onboarding::occupation');
             } else {
-
                 return view('public.pages.preferences', [
-                    'page'=> 'occupation'
+                    'page' => 'occupation'
                 ]);
             }
         } else {
-            return view('public.pages.homepage');
+            return Redirect::route('guest::home');
         }
     }
 }

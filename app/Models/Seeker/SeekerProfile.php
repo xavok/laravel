@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Seeker;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Seeker_Profile extends Content
+class SeekerProfile extends Model
 {
     protected $table = 'seeker_profiles';
     protected $templatePath = 'public/pages';
     protected $contentId = 'page';
-//    protected $appends = ['identifier', 'callouts', 'videos', 'carousels'];
+    //    protected $appends = ['identifier', 'callouts', 'videos', 'carousels'];
 
     protected $fillable = [
         'first_name',

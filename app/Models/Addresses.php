@@ -10,7 +10,7 @@ class Addresses extends Content
 
     protected $fillable = [
         'country_id',
-        'user_id',
+        'profile_id',
         'zip'
     ];
 

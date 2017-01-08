@@ -9,7 +9,7 @@ class Phones extends Content
     protected $table = 'phones';
 
     protected $fillable = [
-        'user_id',
+        'profile_id',
         'phone_number'
     ];
 
