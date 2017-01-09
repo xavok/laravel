@@ -11,8 +11,10 @@ namespace App\Http\Controllers\Guest;
 use App\Models\Addresses;
 use App\Models\Countries;
 use App\Models\Industries;
+use App\Models\Occupations;
 use App\Models\Phones;
 use App\Models\Seeker\SeekerIndustry;
+use App\Models\Seeker\SeekerOccupation;
 use App\Models\Seeker\SeekerProfile;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -124,10 +126,16 @@ class OnboardingController extends Controller
     {
         if (Auth::check()) {
             $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
             if ($request->isMethod('post')) {
                 return Redirect::route('guest::onboarding::occupation');
             } else {
+                $occupations = Occupations::all();
+                $seekerOccupations = SeekerOccupation::where('profile_id', $profile_id)->get();
                 return view('public.pages.preferences', [
+                    'occupations' => $occupations,
+                    'seekerIndustries' => $seekerOccupations,
                     'page' => 'occupation'
                 ]);
             }

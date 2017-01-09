@@ -27,4 +27,9 @@ class SeekerProfile extends Model
     {
         return $this->hasOne('App\Models\Phones', 'profile_id');
     }
+
+    public function industries()
+    {
+        return $this->hasOne('App\Models\Seeker\SeekerIndustry', 'profile_id');
+    }
 }

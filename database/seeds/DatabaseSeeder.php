@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
 
 //        $this->call('UserTableSeeder');
 //        $this->call('CountriesSeeder');
-        $this->call('IndustriesTableSeeder');
+//        $this->call('IndustriesTableSeeder');
+//        $this->call('OccupationsTableSeeder');
+//        $this->call('OccupationSubtypesTableSeeder');
         $this->command->info('Seeded the countries!');
     }
 }
