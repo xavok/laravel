@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
 //        $this->call('IndustriesTableSeeder');
 //        $this->call('OccupationsTableSeeder');
 //        $this->call('OccupationSubtypesTableSeeder');
+//        $this->call('EducationLevelTableSeeder');
+//        $this->call('StudyFieldsTableSeeder');
         $this->command->info('Seeded the countries!');
     }
 }

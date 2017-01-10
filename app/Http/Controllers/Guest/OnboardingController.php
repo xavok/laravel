@@ -168,4 +168,24 @@ class OnboardingController extends Controller
             return Redirect::route('guest::home');
         }
     }
+
+    public function education(Request $request)
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
+            if ($request->isMethod('post')) {
+                return Redirect::route('guest::onboarding::education');
+            } else {
+
+                return view('public.pages.education', [
+                    'page' => 'education'
+                ]);
+            }
+        } else {
+            return Redirect::route('guest::home');
+        }
+    }
+
 }

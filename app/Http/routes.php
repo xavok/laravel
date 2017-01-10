@@ -84,6 +84,16 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
             'as' => 'industry',
             'uses' => 'OnboardingController@industry',
         ]);
+
+        Route::get('/education', [
+            'as' => 'education',
+            'uses' => 'OnboardingController@education',
+        ]);
+
+        Route::post('/education', [
+            'as' => 'education',
+            'uses' => 'OnboardingController@education',
+        ]);
     });
 
 });
