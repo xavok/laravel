@@ -16,10 +16,12 @@ class CreateSeekerOccupationsTable extends Migration
         Schema::create('seeker_occupations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('profile_id')->unsigned();
+            $table->integer('occupation_id')->unsigned();
             $table->integer('occupation_subtype_id')->unsigned();
             $table->integer('years')->unsigned();
             $table->timestamps();
             $table->foreign('profile_id')->references('id')->on('seeker_profiles');
+            $table->foreign('occupation_id')->references('id')->on('occupations');
             $table->foreign('occupation_subtype_id')->references('id')->on('occupation_subtypes');
         });
     }

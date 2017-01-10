@@ -2,16 +2,14 @@
     <div class="panel-body">
         @include('public.includes.messages')
         <form id="industry_form" method="post" action="#">
-            <div id="get_industry_inputs">
-                {{ csrf_field() }}
-                @if($seekerIndustries->count())
-                    @foreach($seekerIndustries as $seekerIndustry)
-                        @include('public.pages.form-pieces.industry')
-                    @endforeach
-                @else
+            {{ csrf_field() }}
+            @if($seekerIndustries->count())
+                @foreach($seekerIndustries as $seekerIndustry)
                     @include('public.pages.form-pieces.industry')
-                @endif
-            </div>
+                @endforeach
+            @else
+                @include('public.pages.form-pieces.industry')
+            @endif
             <div id="place_to_add_more_industry">
             </div>
             <button class="btn btn-default" type="button" id="addIndustry"

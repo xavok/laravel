@@ -1,5 +1,7 @@
 $(window).load(function () {
-    $(".chosen-select").chosen()
+
+
+    $(".chosen-select").chosen();
     $("#login_form").validate();
 
     $("#signup_form").validate({
@@ -16,7 +18,7 @@ $(window).load(function () {
             },
             confirm_password: {
                 required: true,
-                minlength: 5,
+                minlength: 5
                 // equalTo  : "#password"
             }
         },
@@ -34,21 +36,6 @@ $(window).load(function () {
             }
         }
 
-    });
-
-
-    $("#cultural").hide();
-    $('#Education').hide();
-    $("#Skills").hide();
-    $("#work_experience").hide();
-    $("#buttonPrevious").hide();
-    $("#buttonSubmit").hide();
-    $(".steps").click(function () {
-        $("li").removeClass("selected");
-        $(this).addClass("selected");
-        var activeDiv = $(this).html();
-        //console.log(activeDiv);
-        choose(activeDiv);
     });
 
 
@@ -90,75 +77,25 @@ $(window).load(function () {
         }
     }
 
-    var education = 1;
-    var industry = 1;
-    var skills = 1;
-    var occupation = 1;
-
-    // if ($("#seeker_preference").length > 0) {
-    //   $.ajax({
-    //     url    : homeUrl + "/get_occupation_id.php",
-    //     type   : "POST",
-    //     cache  : false,
-    //     success: function (results) {
-    //       var posts = JSON.parse(results);
-    //       //console.log(posts);
-    //       var industry = posts.industry_id.fetch[0];
-    //       var occupation = posts.occupation_id.fetch[0];
-    //       var education = posts.education_id.fetch[0];
-    //       var occupation_subtype = posts.occupation_subtype_id.fetch[0];
-    //       var industry_id = industry['seeker_industry_experience_id'];
-    //       var occupation_id = occupation['seeker_occupation_experience_id'];
-    //       var education_id = education['seeker_profile_education_id'];
-    //       var occupation_subtype_id = occupation_subtype['occupation_subtype_id'];
-    //       var seeker_preference_id = posts.seeker_preferences.fetch[0]['seeker_preference_id'];
-    //       education['school'] = education['school'].replace(/\+/g, " ");
-    //       $("#seeker_occupation_experience_id").val(occupation_id);
-    //       $("#seeker_preference_id").val(seeker_preference_id);
-    //       $("#seeker_industry_experience_id").val(industry_id);
-    //       $("#seeker_profile_education_id").val(education_id);
-    //       $("#occupation_years").val(occupation['years']);
-    //       $("#occupation").val(occupation['occupation_subtype_id']);
-    //       $("#occupation_subtype_id").val(occupation_subtype_id);
-    //       $("#industry_years").val(industry['years']);
-    //       $("#industry_id").val(industry['industry_id']);
-    //       $("#school").val(education['school']);
-    //       $("#graduation").val(education['graduation']);
-    //       $("#education_level_id").val(education['education_level_id']);
-    //       $("#study_field_id").val(education['study_field_id']);
-    //       //$("#collapseTwo").accordion({active:0});
-    //       //$(".selected").prev(".steps").removeClass("selected");
-    //       //var activeDiv = $(".selected").html();
-    //       //choose(activeDiv);
-    //     },
-    //     error  : function () {
-    //       alert('Cannot retrieve data.');
-    //     }
-    //   });
-    // }
-
-    if ($("#occupation_form").length > 0) {
-
+    if ($("#industry_form").length > 0) {
         $("#bar").css("width", "20%");
         $("#bar").html("20%");
         $("#bar").addClass("progress-bar-danger");
+
+    }
+    if ($("#occupation_form").length > 0) {
+        $("#bar").css("width", "30%");
+        $("#bar").html("30%");
     }
 
     if ($("#cultural_form").length > 0) {
-
-        //
         $("#bar").removeClass("progress-bar-danger");
         $("#bar").addClass("progress-bar-warning");
         $("#bar").css("width", "60%");
         $("#bar").html("60%");
     }
 
-    if ($("#industry_form").length > 0) {
 
-        $("#bar").css("width", "30%");
-        $("#bar").html("30%");
-
-    }
 
     if ($("#education_form").length > 0) {
 
@@ -195,27 +132,20 @@ $(window).load(function () {
 
     });
     $("#addOccupation").click(function () {
-
-        var hello = $("#get_occupation_inputs").html();
-
-        var re = hello.match(/name="(.*?)"/g);
-        $.each(re, function (i, l) {
-            var length = l.length - 1;
-            var output = [l.slice(0, length), occupation, l.slice(length)].join('');
-            hello = hello.replace(re[i], output);
-        });
-        console.log(hello);
-
-
-        var n = $("#place_to_add_more_occupation").append(hello);
-        occupation++;
-
+        var occupationNumber = $('.occupation').length;
+        if (occupationNumber < 3) {
+            var occupation = $(".get_occupation_inputs").html();
+            $("#place_to_add_more_occupation").append(occupation);
+            $('[name="id[]"]').last().val(0);
+        } else {
+            $(".panel-body").prepend("<div class='alert alert-danger'>You can't select more than 3 industries at the moment</div>");
+        }
     });
     $("#addIndustry").click(function () {
-        $industriesNum = $('.industries').length;
-        if ($industriesNum < 3) {
-            var industry = $("#get_industry_inputs").html();
-            var n = $("#place_to_add_more_industry").append(industry);
+        var industriesNum = $('.industries').length;
+        if (industriesNum < 3) {
+            var industry = $(".get_industry_inputs").first().html();
+            $("#place_to_add_more_industry").append(industry);
             $('[name="id[]"]').last().val(0);
         } else {
             $(".panel-body").prepend("<div class='alert alert-danger'>You can't select more than 3 industries at the moment</div>");
@@ -258,6 +188,8 @@ $(window).load(function () {
                     $("#candidate_id").html("Candidate " + $(this).html() + " to Job IT2438");
                 });
             }
+        } else if (window.location.href.indexOf("occupation") > -1) {
+            occupationPage();
         }
 
 
@@ -343,5 +275,25 @@ $(window).load(function () {
             return true;
         }
 
+    }
+
+    function occupationPage() {
+        $("#occupation_form").on('change', '.occupation', function () {
+            $this = $(this);
+            console.log('ds');
+            var id = $(this).val();
+            $.ajax({
+                type: 'Get',
+                url: '/occupation-types/' + id,
+                success: function (res) {
+                    $type = $this.parent('.input-group').next().next().find('.type');
+                    $type.find('option').remove();
+                    for (var i = 0; i < res.length; i++) {
+                        $type.append('<option value="' + res[i].id + '">' + res[i].occupation_subtype_name + '</option>');
+                        $type.prop("disabled", false); // Element(s) are now enabled.
+                    }
+                }
+            });
+        });
     }
 });

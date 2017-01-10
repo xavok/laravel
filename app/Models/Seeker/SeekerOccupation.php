@@ -2,6 +2,7 @@
 
 namespace App\Models\Seeker;
 
+use App\Models\OccupationSubtypes;
 use Illuminate\Database\Eloquent\Model;
 
 class SeekerOccupation extends Model
@@ -15,4 +16,10 @@ class SeekerOccupation extends Model
         'occupation_subtype_id',
         'years'
     ];
+    protected $appends = array('allTypes');
+
+    public function getallTypesAttribute($id)
+    {
+        return OccupationSubtypes::where('occupation_id', $id)->get();
+    }
 }

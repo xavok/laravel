@@ -12,7 +12,12 @@
 */
 
 /***** PUBLIC ****/
-
+Route::group([ 'as' => 'ajax::', ], function() {
+    Route::get('/occupation-types/{id}', [
+        'as' => 'occupation-types',
+        'uses' => 'AjaxController@occupationTypes'
+    ]);
+});
 Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
 
     Route::get('/', [

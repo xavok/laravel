@@ -11,6 +11,4 @@ class OccupationSubtypes extends Model
         'occupation_id',
         'occupation_subtype_name'
     ];
-
-
 }

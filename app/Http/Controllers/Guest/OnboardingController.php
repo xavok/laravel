@@ -12,6 +12,7 @@ use App\Models\Addresses;
 use App\Models\Countries;
 use App\Models\Industries;
 use App\Models\Occupations;
+use App\Models\OccupationSubtypes;
 use App\Models\Phones;
 use App\Models\Seeker\SeekerIndustry;
 use App\Models\Seeker\SeekerOccupation;
@@ -86,7 +87,7 @@ class OnboardingController extends Controller
             $profile = SeekerProfile::where('user_id', $user_id)->first();
             $profile_id = $profile->id;
             if ($request->isMethod('post')) {
-                for ($i = 0; $i < count($request->get('industry_id')); $i++) {
+                for ($i = 0; $i < count($request->get('id')); $i++) {
                     $id = $request->get('id')[$i];
                     $seekerIndustry = SeekerIndustry::where('id', $id)->first();
                     if (!empty($seekerIndustry)) {
@@ -129,13 +130,37 @@ class OnboardingController extends Controller
             $profile = SeekerProfile::where('user_id', $user_id)->first();
             $profile_id = $profile->id;
             if ($request->isMethod('post')) {
+                for ($i = 0; $i < count($request->get('id')); $i++) {
+                    $id = $request->get('id')[$i];
+                    $seekerOccupation = SeekerOccupation::where('id', $id)->first();
+                    if (!empty($seekerOccupation)) {
+                        $type_id = $request->get('type')[$i];
+                        $type_exist = SeekerOccupation::where('id', '!=', $id)->where('occupation_subtype_id', $type_id)->first();
+                        if (!empty($type_exist)) {
+                            $request->session()->flash('alert-danger', 'You can not add same subtype occupation more than once.');
+                            return Redirect::route('guest::onboarding::industry');
+                        } else {
+                            $seekerOccupation->occupation_id = $request->get('occupation')[$i];
+                            $seekerOccupation->occupation_subtype_id = $type_id;
+                            $seekerOccupation->years = $request->get('years')[$i];
+                        }
+                    } else {
+                        $seekerOccupation = new SeekerOccupation();
+                        $seekerOccupation->occupation_id = $request->get('occupation')[$i];
+                        $seekerOccupation->occupation_subtype_id = $request->get('type')[$i];
+                        $seekerOccupation->years = $request->get('years')[$i];
+                        $seekerOccupation->profile_id = $profile_id;
+                    }
+                    $seekerOccupation->save();
+                }
                 return Redirect::route('guest::onboarding::occupation');
             } else {
                 $occupations = Occupations::all();
                 $seekerOccupations = SeekerOccupation::where('profile_id', $profile_id)->get();
+
                 return view('public.pages.preferences', [
                     'occupations' => $occupations,
-                    'seekerIndustries' => $seekerOccupations,
+                    'seekerOccupations' => $seekerOccupations,
                     'page' => 'occupation'
                 ]);
             }
