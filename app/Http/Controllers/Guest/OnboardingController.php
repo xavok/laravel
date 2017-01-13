@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Models\Addresses;
 use App\Models\Countries;
+use App\Models\EducationLevel;
 use App\Models\Industries;
 use App\Models\Occupations;
 use App\Models\OccupationSubtypes;
@@ -17,6 +18,7 @@ use App\Models\Phones;
 use App\Models\Seeker\SeekerIndustry;
 use App\Models\Seeker\SeekerOccupation;
 use App\Models\Seeker\SeekerProfile;
+use App\Models\StudyField;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\Request;
@@ -153,7 +155,7 @@ class OnboardingController extends Controller
                     }
                     $seekerOccupation->save();
                 }
-                return Redirect::route('guest::onboarding::occupation');
+                return Redirect::route('guest::onboarding::education');
             } else {
                 $occupations = Occupations::all();
                 $seekerOccupations = SeekerOccupation::where('profile_id', $profile_id)->get();
@@ -178,8 +180,11 @@ class OnboardingController extends Controller
             if ($request->isMethod('post')) {
                 return Redirect::route('guest::onboarding::education');
             } else {
-
-                return view('public.pages.education', [
+                $educationLevels = EducationLevel::all();
+                $studyFields = StudyField::all();
+                return view('public.pages.preferences', [
+                    'levels' => $educationLevels,
+                    'studyFields' => $studyFields,
                     'page' => 'education'
                 ]);
             }

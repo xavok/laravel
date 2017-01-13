@@ -20,18 +20,19 @@
     <label for="exampleInputEmail1">Education Level</label>
     <div class="input-group">
         <select class="form-control" name="education_level_id" id="education_level_id">
+            @foreach($levels as $level)
+                <option id="{{$level->id}}">{{$level->name}}</option>
+            @endforeach
         </select>
     </div>
     <label for="exampleInputEmail1">Major</label>
     <div class="input-group">
         <select class="form-control" name="study_field_id" id="study_field_id">
+            @foreach($studyFields as $field)
+                <option id="{{$field->id}}">{{$field->name}}</option>
+            @endforeach
         </select>
     </div>
 </div>
 <div id="place_to_add_more_education">
-</div>
-<button class="btn btn-default" type="button" id="addEducation" style="margin-top: 10px;">Add more</button>
-<div class=" input-group" style="width: 100%;">
-    <input type="submit" value="Next" name="EDsubmit" class="btn btn-default buttonNext" style="margin-left:10px">
-    <input type="submit" value="Back" name="OCCsubmit" class="btn btn-default buttonNext">
 </div>

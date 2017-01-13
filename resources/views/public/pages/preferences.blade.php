@@ -17,8 +17,9 @@
                 @include('public.pages.forms.industry')
             @elseif($page == 'occupation')
                 @include('public.pages.forms.occupation')
+            @elseif($page == 'education')
+                @include('public.pages.forms.education')
             @endif
-
         </div>
     </div>
 @endsection

@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
 //        $this->call('OccupationSubtypesTableSeeder');
 //        $this->call('EducationLevelTableSeeder');
 //        $this->call('StudyFieldsTableSeeder');
-        $this->command->info('Seeded the countries!');
+//        $this->command->info('Seeded the countries!');
     }
 }
