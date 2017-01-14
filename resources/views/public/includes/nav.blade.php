@@ -1,9 +1,12 @@
 <!-- Navbar -->
+<script>
+   var profile_id = <?php if(!empty($profile_id)) {echo $profile_id;} ?>;
+</script>
 <nav class="navbar">
     <div class="container-fluid-nav">
         <div>
             <ul class="nav navbar-nav">
-                <li id="logo"><a href="index.php"><img src="{{ URL::asset('img/newLogoImg.jpg') }}" alt="log pic"></a>
+                <li id="logo"><a href="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg.jpg') }}" alt="log pic"></a>
                 </li>
                 <li><a href="{{URL::route('guest::home')}}#revolution">Hiring Revolution</a></li>
                 <li><a href="{{URL::route('guest::home')}}#seekers">Job Seekers</a></li>
@@ -15,7 +18,7 @@
                 @if(Auth::user())
                     <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
                             Preferences</a></li>
-                    <li><a href="./profile">Profile</a></li>
+                    <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 @else
                     <li><a href="/register"><span

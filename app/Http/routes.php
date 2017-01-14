@@ -11,11 +11,27 @@
 |
 */
 
+/***** ADMIN ****/
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin::' ], function() {
+
+    Route::get('/', [
+        'as' => 'dashboard',
+        'uses' => 'DashboardController@index',
+    ]);
+
+});
 /***** PUBLIC ****/
 Route::group([ 'as' => 'ajax::', ], function() {
     Route::get('/occupation-types/{id}', [
         'as' => 'occupation-types',
         'uses' => 'AjaxController@occupationTypes'
+    ]);
+
+    Route::get('/cultural-choices/{profile_id}', [
+        'as' => 'cultural-choices',
+        'uses' => 'AjaxController@culturalChoices'
     ]);
 });
 Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {

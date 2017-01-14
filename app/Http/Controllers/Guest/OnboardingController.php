@@ -15,10 +15,12 @@ use App\Models\Industries;
 use App\Models\Occupations;
 use App\Models\OccupationSubtypes;
 use App\Models\Phones;
+use App\Models\Preferences;
 use App\Models\Qualifications;
 use App\Models\Seeker\SeekerEducation;
 use App\Models\Seeker\SeekerIndustry;
 use App\Models\Seeker\SeekerOccupation;
+use App\Models\Seeker\SeekerPreferences;
 use App\Models\Seeker\SeekerProfile;
 use App\Models\Seeker\SeekerQualification;
 use App\Models\StudyField;
@@ -274,9 +276,24 @@ class OnboardingController extends Controller
             $profile = SeekerProfile::where('user_id', $user_id)->first();
             $profile_id = $profile->id;
             if ($request->isMethod('post')) {
-                return Redirect::route('guest::onboarding::industry');
+                $id = $request->get('id');
+                $seekerPreferences = SeekerPreferences::where('id', $id)->first();
+                if (!empty($seekerPreferences)) {
+                    $seekerPreferences->fill($request->all());
+                } else {
+                    $seekerPreferences = new SeekerPreferences();
+                    $seekerPreferences->fill($request->all());
+                    $seekerPreferences->profile_id = $profile_id;
+                }
+                $seekerPreferences->save();
+                return Redirect::route('guest::profile');
             } else {
+                $preferences = Preferences::with('choices')->get();
+                $seekerPreferences = SeekerPreferences::where('profile_id', $profile_id)->first();
                 return view('public.pages.preferences', [
+                    'seekerPreferences' => $seekerPreferences,
+                    'preferences' => $preferences,
+                    'profile_id' => $profile_id,
                     'page' => 'cultural'
                 ]);
             }

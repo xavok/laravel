@@ -21,9 +21,9 @@ class CreateSeekerPreferencesTable extends Migration
             $table->integer('atmosphere_1_id')->unsigned();
             $table->integer('atmosphere_2_id')->unsigned();
             $table->integer('atmosphere_3_id')->unsigned();
-            $table->integer('work_environment_1_id')->unsigned();
-            $table->integer('work_environment_2_id')->unsigned();
-            $table->integer('work_environment_3_id')->unsigned();
+            $table->integer('workenvironment_1_id')->unsigned();
+            $table->integer('workenvironment_2_id')->unsigned();
+            $table->integer('workenvironment_3_id')->unsigned();
             $table->integer('interaction_1_id')->unsigned();
             $table->integer('interaction_2_id')->unsigned();
             $table->integer('interaction_3_id')->unsigned();

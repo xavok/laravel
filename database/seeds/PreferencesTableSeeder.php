@@ -18,18 +18,23 @@ class PreferencesTableSeeder extends Seeder
     {
         DB::table('preferences')->delete();
         Preferences::create(array(
+            'slug' => 'workplace',
             'description'    => 'Preference for your workspace'
         ));
         Preferences::create(array(
+            'slug' => 'workenvironment',
             'description'    => 'Preference for your work environment'
         ));
         Preferences::create(array(
+            'slug' => 'atmosphere',
             'description'    => 'Preference for your workspace atmosphere/noise level'
         ));
         Preferences::create(array(
+            'slug' => 'interaction',
             'description'    => 'Preference for how you interact with your co-workers'
         ));
         Preferences::create(array(
+            'slug' => 'microculture',
             'description'    => 'Preference for how well you know and socialize with your co-workers'
         ));
     }
