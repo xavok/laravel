@@ -252,7 +252,7 @@ class OnboardingController extends Controller
                     }
                     $seekerQualification->save();
                 }
-                return Redirect::route('guest::onboarding::industry');
+                return Redirect::route('guest::onboarding::cultural');
             } else {
                 $qualifications = Qualifications::all();
                 $seekerQualifications = SeekerQualification::where('profile_id', $profile_id)->get();
@@ -266,5 +266,24 @@ class OnboardingController extends Controller
             return Redirect::route('guest::home');
         }
     }
+
+    public function cultural(Request $request)
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
+            if ($request->isMethod('post')) {
+                return Redirect::route('guest::onboarding::industry');
+            } else {
+                return view('public.pages.preferences', [
+                    'page' => 'cultural'
+                ]);
+            }
+        } else {
+            return Redirect::route('guest::home');
+        }
+    }
+
 
 }

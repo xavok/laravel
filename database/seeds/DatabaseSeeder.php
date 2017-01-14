@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
 //        $this->call('EducationLevelTableSeeder');
 //        $this->call('StudyFieldsTableSeeder');
 //        $this->call('QualificationsTableSeeder');
+        $this->call('PreferencesTableSeeder');
+        $this->call('PreferenceChoicesTableSeeder');
 //        $this->command->info('Seeded the countries!');
     }
 }

@@ -104,6 +104,16 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
             'as' => 'qualification',
             'uses' => 'OnboardingController@qualification',
         ]);
+
+        Route::get('/cultural', [
+            'as' => 'cultural',
+            'uses' => 'OnboardingController@cultural',
+        ]);
+
+        Route::post('/cultural', [
+            'as' => 'cultural',
+            'uses' => 'OnboardingController@cultural',
+        ]);
     });
 
 });
