@@ -508,3 +508,7 @@ Chosing Side page
     height: 30px;
     border-radius: 0;
 }
+
+.get_qualifications, .add_qualifications select {
+    margin-bottom:10px;
+}

@@ -84,8 +84,8 @@ $(window).load(function () {
 
     }
     if ($("#occupation_form").length > 0) {
-        $("#bar").css("width", "30%");
-        $("#bar").html("30%");
+        $("#bar").css("width", "40%");
+        $("#bar").html("40%");
     }
 
     if ($("#cultural_form").length > 0) {
@@ -99,8 +99,8 @@ $(window).load(function () {
 
     if ($("#education_form").length > 0) {
 
-        $("#bar").css("width", "40%");
-        $("#bar").html("40%");
+        $("#bar").css("width", "60%");
+        $("#bar").html("60%");
 
     }
 
@@ -118,8 +118,8 @@ $(window).load(function () {
     $("#addEducation").click(function () {
         var educationNumber = $('.school').length;
         if (educationNumber < 3) {
-            var occupation = $(".get_education_inputs").html();
-            $("#place_to_add_more_education").append(occupation);
+            var education = $(".get_education_inputs").html();
+            $("#place_to_add_more_education").append(education);
             $('[name="id[]"]').last().val(0);
         } else {
             $(".panel-body").prepend("<div class='alert alert-danger'>You can't select more than 3 schools at the moment</div>");
@@ -145,17 +145,10 @@ $(window).load(function () {
             $(".panel-body").prepend("<div class='alert alert-danger'>You can't select more than 3 industries at the moment</div>");
         }
     });
-    $("#addSkills").click(function () {
-        var hello = $("#get_skills_inputs").html();
-        var re = hello.match(/name="(.*?)"/g);
-        $.each(re, function (i, l) {
-            var length = l.length - 1;
-            var output = [l.slice(0, length), skills, l.slice(length)].join('');
-            hello = hello.replace(re[i], output);
-        });
-        var n = $("#add_skills_inputs").append(hello);
-        skills++;
-        console.log(skills);
+    $("#addQualification").click(function () {
+        var qualification = $(".get_qualifications").first().html();
+        $(".add_qualifications").append(qualification);
+        $('[name="id[]"]').last().val(0);
 
     });
     $(function () {

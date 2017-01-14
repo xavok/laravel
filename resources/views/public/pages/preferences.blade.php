@@ -19,6 +19,8 @@
                 @include('public.pages.forms.occupation')
             @elseif($page == 'education')
                 @include('public.pages.forms.education')
+            @elseif($page == 'qualification')
+                @include('public.pages.forms.qualification')
             @endif
         </div>
     </div>

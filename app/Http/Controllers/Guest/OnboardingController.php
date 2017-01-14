@@ -15,10 +15,12 @@ use App\Models\Industries;
 use App\Models\Occupations;
 use App\Models\OccupationSubtypes;
 use App\Models\Phones;
+use App\Models\Qualifications;
 use App\Models\Seeker\SeekerEducation;
 use App\Models\Seeker\SeekerIndustry;
 use App\Models\Seeker\SeekerOccupation;
 use App\Models\Seeker\SeekerProfile;
+use App\Models\Seeker\SeekerQualification;
 use App\Models\StudyField;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -142,7 +144,7 @@ class OnboardingController extends Controller
                         $type_exist = SeekerOccupation::where('id', '!=', $id)->where('occupation_subtype_id', $type_id)->first();
                         if (!empty($type_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same subtype occupation more than once.');
-                            return Redirect::route('guest::onboarding::industry');
+                            return Redirect::route('guest::onboarding::occupation');
                         } else {
                             $seekerOccupation->occupation_id = $request->get('occupation')[$i];
                             $seekerOccupation->occupation_subtype_id = $type_id;
@@ -186,9 +188,9 @@ class OnboardingController extends Controller
                     if (!empty($seekerEducation)) {
                         $school = $request->get('school')[$i];
                         $school_exist = SeekerEducation::where('id', '!=', $id)->where('school', $school)->first();
-                        if (!empty($type_exist)) {
+                        if (!empty($school_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same school more than once.');
-                            return Redirect::route('guest::onboarding::industry');
+                            return Redirect::route('guest::onboarding::education');
                         } else {
                             $seekerEducation->school = $school;
                             $seekerEducation->education_level_id = $request->get('education_level_id')[$i];
@@ -205,7 +207,7 @@ class OnboardingController extends Controller
                     }
                     $seekerEducation->save();
                 }
-                return Redirect::route('guest::onboarding::industry');
+                return Redirect::route('guest::onboarding::qualification');
             } else {
                 $educationLevels = EducationLevel::all();
                 $studyFields = StudyField::all();
@@ -215,6 +217,49 @@ class OnboardingController extends Controller
                     'studyFields' => $studyFields,
                     'seekerEducations' => $seekerEducations,
                     'page' => 'education'
+                ]);
+            }
+        } else {
+            return Redirect::route('guest::home');
+        }
+    }
+
+    public function qualification(Request $request)
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            $profile_id = $profile->id;
+            if ($request->isMethod('post')) {
+                for ($i = 0; $i < count($request->get('id')); $i++) {
+                    $id = $request->get('id')[$i];
+                    $seekerQualification = SeekerQualification::where('id', $id)->first();
+                    if (!empty($seekerQualification)) {
+                        $qualification = $request->get('qualification')[$i];
+                        $qualification_exist = SeekerQualification::where('id', '!=', $id)->where('qualification_id', $qualification)->first();
+                        if (!empty($qualification_exist)) {
+                            $request->session()->flash('alert-danger', 'You can not add same qualification more than once.');
+                            return Redirect::route('guest::onboarding::education');
+                        } else {
+                            $seekerQualification->qualification_id = $qualification;
+                            $seekerQualification->qualification_rank = rand(1,10);
+                        }
+                    } else {
+                        $seekerQualification = new SeekerQualification();
+                        $seekerQualification->qualification_id = $request->get('qualification')[$i];
+                        $seekerQualification->qualification_rank = rand(1,10);
+                        $seekerQualification->profile_id = $profile_id;
+                    }
+                    $seekerQualification->save();
+                }
+                return Redirect::route('guest::onboarding::industry');
+            } else {
+                $qualifications = Qualifications::all();
+                $seekerQualifications = SeekerQualification::where('profile_id', $profile_id)->get();
+                return view('public.pages.preferences', [
+                    'seekerQualifications' => $seekerQualifications,
+                    'allQualifications' => $qualifications,
+                    'page' => 'qualification'
                 ]);
             }
         } else {
