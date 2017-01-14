@@ -20,6 +20,39 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin::' ], 
         'as' => 'dashboard',
         'uses' => 'DashboardController@index',
     ]);
+    Route::group([ 'prefix' => 'seeker', 'as' => 'seeker::', 'namespace' => 'JobSeeker', ], function() {
+
+        Route::get('/', [
+            'as' => 'list',
+            'uses' => 'JobSeekerController@index',
+        ]);
+
+        Route::get('/create', [
+            'as' => 'create',
+            'uses' => 'JobSeekerController@create',
+        ]);
+
+        Route::get('/edit/{id}', [
+            'as' => 'edit',
+            'uses' => 'JobSeekerController@edit',
+        ]);
+
+        Route::post('/create', [
+            'as' => 'store',
+            'uses' => 'JobSeekerController@store',
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'update',
+            'uses' => 'JobSeekerController@update',
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'delete',
+            'uses' => 'JobSeekerController@delete',
+        ]);
+
+    });
 
 });
 /***** PUBLIC ****/

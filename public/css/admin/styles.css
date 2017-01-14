@@ -1,0 +1,57 @@
+.table-responsive table.align-middle td {
+    align-items:center;
+    vertical-align:middle !important;
+}
+
+.table-linker tr {
+    cursor:pointer;
+}
+
+.danger {
+    color:#ff0000;
+}
+
+.stats {
+    padding: 2em 0;
+}
+
+.stats hr {
+    margin:32px 0;
+}
+
+.stats .tab-pane {
+    padding:32px 0;
+}
+
+.stats .metric-pod {
+    margin:24px 0;
+    padding:0px;
+    border:1px solid #ebebeb;
+    border-radius:5px;
+}
+
+.stats .metric-pod-inner {
+    position:relative;
+    margin:5px;
+    background-color:#ebebeb;
+    padding:12px;
+    text-align:center;
+    height:150px;
+}
+
+.stats .metric-pod-inner h3 {
+    height:39px;
+    font-size:36px;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    position:absolute;
+}
+
+.stats .metric-pod-label {
+    text-align:center;
+    font-size:16px;
+    padding:12px 0;
+}

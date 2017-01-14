@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="{{ @$content['meta_description'] }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quansis</title>
     @include('public.includes.head')
     @section('head_close')
     @show
