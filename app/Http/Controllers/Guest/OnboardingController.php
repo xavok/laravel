@@ -15,10 +15,12 @@ use App\Models\Industries;
 use App\Models\Occupations;
 use App\Models\OccupationSubtypes;
 use App\Models\Phones;
+use App\Models\Seeker\SeekerEducation;
 use App\Models\Seeker\SeekerIndustry;
 use App\Models\Seeker\SeekerOccupation;
 use App\Models\Seeker\SeekerProfile;
 use App\Models\StudyField;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\Request;
@@ -178,13 +180,40 @@ class OnboardingController extends Controller
             $profile = SeekerProfile::where('user_id', $user_id)->first();
             $profile_id = $profile->id;
             if ($request->isMethod('post')) {
-                return Redirect::route('guest::onboarding::education');
+                for ($i = 0; $i < count($request->get('id')); $i++) {
+                    $id = $request->get('id')[$i];
+                    $seekerEducation = SeekerEducation::where('id', $id)->first();
+                    if (!empty($seekerEducation)) {
+                        $school = $request->get('school')[$i];
+                        $school_exist = SeekerEducation::where('id', '!=', $id)->where('school', $school)->first();
+                        if (!empty($type_exist)) {
+                            $request->session()->flash('alert-danger', 'You can not add same school more than once.');
+                            return Redirect::route('guest::onboarding::industry');
+                        } else {
+                            $seekerEducation->school = $school;
+                            $seekerEducation->education_level_id = $request->get('education_level_id')[$i];
+                            $seekerEducation->study_field_id = $request->get('study_field_id')[$i];
+                            $seekerEducation->graduation_date = $request->get('graduation')[$i];
+                        }
+                    } else {
+                        $seekerEducation = new SeekerEducation();
+                        $seekerEducation->school = $request->get('school')[$i];
+                        $seekerEducation->education_level_id = $request->get('education_level_id')[$i];
+                        $seekerEducation->study_field_id = $request->get('study_field_id')[$i];
+                        $seekerEducation->graduation_date = $request->get('graduation')[$i];
+                        $seekerEducation->profile_id = $profile_id;
+                    }
+                    $seekerEducation->save();
+                }
+                return Redirect::route('guest::onboarding::industry');
             } else {
                 $educationLevels = EducationLevel::all();
                 $studyFields = StudyField::all();
+                $seekerEducations = SeekerEducation::where('profile_id', $profile_id)->get();
                 return view('public.pages.preferences', [
                     'levels' => $educationLevels,
                     'studyFields' => $studyFields,
+                    'seekerEducations' => $seekerEducations,
                     'page' => 'education'
                 ]);
             }

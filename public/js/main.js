@@ -116,20 +116,14 @@ $(window).load(function () {
     }
 
     $("#addEducation").click(function () {
-
-        var hello = $("#get_education_inputs").html();
-
-        var re = hello.match(/name="(.*?)"/g);
-        $.each(re, function (i, l) {
-            var length = l.length - 1;
-            var output = [l.slice(0, length), education, l.slice(length)].join('');
-            hello = hello.replace(re[i], output);
-        });
-        //console.log(hello);
-
-        var n = $("#place_to_add_more_education").append(hello);
-        education++;
-
+        var educationNumber = $('.school').length;
+        if (educationNumber < 3) {
+            var occupation = $(".get_education_inputs").html();
+            $("#place_to_add_more_education").append(occupation);
+            $('[name="id[]"]').last().val(0);
+        } else {
+            $(".panel-body").prepend("<div class='alert alert-danger'>You can't select more than 3 schools at the moment</div>");
+        }
     });
     $("#addOccupation").click(function () {
         var occupationNumber = $('.occupation').length;
