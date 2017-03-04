@@ -11,6 +11,7 @@ use App\Models\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Seeker\SeekerProfile;
 
 class ProfileController extends Controller
 {
@@ -18,8 +19,9 @@ class ProfileController extends Controller
     public function index()
     {
         if(Auth::check()) {
-            $user = Auth::user();
-            return view('public.pages.seeker-portal', ['user' => $user]);
+            $user_id = Auth::user()->id;
+            $profile = SeekerProfile::where('user_id', $user_id)->first();
+            return view('public.pages.seeker-portal', ['user' => $profile]);
         } else {
             return view('public.pages.homepage');
         }

@@ -12,7 +12,7 @@ use App\Models\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Seeker_Profile;
+use App\Models\Seeker\SeekerProfile;
 
 class HomepageController extends Controller
 {
@@ -85,7 +85,7 @@ class HomepageController extends Controller
                 Auth::attempt(['email' => $email, 'password' => $password]);
 
                 //adding seeker profile for user
-                $profile = new Seeker_Profile();
+                $profile = new SeekerProfile();
                 $profile->user_id = $user->id;
                 $profile->first_name = $request->get('first_name');
                 $profile->last_name = $request->get('last_name');
