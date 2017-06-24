@@ -6,6 +6,7 @@
                 @include('public.pages.form-pieces.cultural')
                 <input type="submit" value="Next" class="btn btn-default buttonNext"
                        style="margin-left:10px">
+            <a class="btn btn-default buttonNext" href="qualification" style="margin-left:10px">Preview</a>
         </form>
     </div>
 </div>

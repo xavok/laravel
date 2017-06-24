@@ -1,18 +1,33 @@
 <!-- Navbar -->
 <script>
-   var profile_id = <?php if(!empty($profile_id)) {echo $profile_id;} ?>;
+    var profile_id = <?php if (!empty($profile_id)) {
+        echo $profile_id;
+    } else {
+        echo 0;
+    } ?>;
 </script>
 <nav class="navbar">
     <div class="container-fluid-nav">
         <div>
             <ul class="nav navbar-nav">
-                <li id="logo"><a href="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg.jpg') }}" alt="log pic"></a>
+                <li id="logo"><a href="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg.jpg') }}"
+                                                                           alt="log pic"></a>
                 </li>
+                <?php if (Request::is('onboarding/*'))
+                { ?>
+                <li><a href="{{URL::route('guest::onboarding::about-you')}}">Personal Info</a></li>
+                <li><a href="{{URL::route('guest::onboarding::industry')}}">Industry</a></li>
+                <li><a href="{{URL::route('guest::onboarding::occupation')}}">Occupation</a></li>
+                <li><a href="{{URL::route('guest::onboarding::education')}}">Education</a></li>
+                <li><a href="{{URL::route('guest::onboarding::qualification')}}">Qualifications</a></li>
+                <li><a href="{{URL::route('guest::onboarding::cultural')}}">Culture</a></li>
+                <?php } else { ?>
                 <li><a href="{{URL::route('guest::home')}}#revolution">Hiring Revolution</a></li>
                 <li><a href="{{URL::route('guest::home')}}#seekers">Job Seekers</a></li>
                 <li><a href="{{URL::route('guest::home')}}#companies">Hiring Companies</a></li>
                 <li><a href="{{URL::route('guest::home')}}#about">About Us</a></li>
                 <li><a href="{{URL::route('guest::home')}}#contact">Contact Us</a></li>
+                <?php } ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::user())

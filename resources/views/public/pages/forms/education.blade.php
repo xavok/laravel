@@ -16,6 +16,7 @@
             </button>
             <div class="input-group" style="width: 100%;">
                 <input type="submit" value="Next" class="btn btn-default buttonNext" style="margin-left:10px">
+                <a class="btn btn-default buttonNext" href="occupation" style="margin-left:10px">Preview</a>
             </div>
         </form>
     </div>

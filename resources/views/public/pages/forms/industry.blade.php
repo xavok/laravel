@@ -18,6 +18,7 @@
             <div class="input-group" style="width: 100%;">
                 <input type="submit" value="Next" name="INsubmit"
                        class="btn btn-default buttonNext" style="margin-left:10px">
+                <a class="btn btn-default buttonNext" href="about-you" style="margin-left:10px">Preview</a>
             </div>
         </form>
     </div>
