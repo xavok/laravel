@@ -171,16 +171,6 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
 Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
 
 
-    Route::post('/company/login', [
-        'as' => 'company-login',
-        'uses' => 'CompanyController@login',
-    ]);
-
-    Route::get('/logout', [
-        'as' => 'company-logout',
-        'uses' => 'CompanyController@logout',
-    ]);
-
     Route::get('/company/register', [
         'as' => 'company-register',
         'uses' => 'CompanyController@register',

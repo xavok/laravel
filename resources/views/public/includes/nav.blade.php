@@ -39,7 +39,11 @@
                 @if(Auth::user())
                     <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
                             Preferences</a></li>
-                    <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
+                    @if(Auth::user()->type == 'company')
+                        <li><a href="{{URL::route('guest::command-center')}}">Command Center</a></li>
+                    @else
+                        <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
+                    @endif
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 @else
                     <li><a href="/register"><span

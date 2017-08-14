@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Guest;
 
+use App\Models\Company\Companies;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class HomepageController extends Controller
             if (Auth::attempt($userdata)) {
                 $user = Auth::user();
                 if($user['type'] === Users::USER_COMPANY) {
-                    return Redirect::to('/company/command-center');
+                    return Redirect::route('guest::command-center');
                 } else {
                     return Redirect::to('/profile');
                 }
@@ -99,7 +100,7 @@ class HomepageController extends Controller
                 $profile->last_matched = Carbon::now();
                 $profile->should_be_matched = 0;
                 $profile->save();
-                return Redirect::route('guest::onboarding::about-you', array('page' => 'about-you'));
+                return Redirect::route('guest::onboarding::about-you', ['page' => 'about-you']);
 
             }
         } else {

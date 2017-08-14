@@ -14,46 +14,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class CompanyController extends Controller
 {
-
-    public function login(Request $request)
-    {
-        // validate the info, create rules for the inputs
-        $rules = array(
-            'email' => 'required|email', // make sure the email is an actual email
-            'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
-        );
-        // run the validation rules on the inputs from the form
-        $validator = Validator::make(Input::all(), $rules);
-        // if the validator fails, redirect back to homepage
-        if ($validator->fails()) {
-            return Redirect::to('/')
-                ->withErrors($validator)// send back all errors to the login form
-                ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
-        } else {
-            // create our user data for the authentication
-            $userdata = array(
-                'email' => Input::get('email'),
-                'password' => Input::get('password')
-            );
-            // attempt to do the login
-            if (Auth::attempt($userdata)) {
-
-                return Redirect::to('/profile');
-            } else {
-                // validation not successful, send back to form
-                return Redirect::to('/')
-                    ->withErrors(['Username/password is incorrect. Please try again']);
-            }
-
-        }
-    }
-
-    public function logout()
-    {
-        Auth::logout(); // log the user out of our application
-        return Redirect::to('/'); // redirect the user to the login screen
-    }
-
     public function register(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -85,7 +45,7 @@ class CompanyController extends Controller
                 $company->user_id = $user->id;
                 $company->name = $request->get('name');
                 $company->save();
-                return Redirect::route('guest::onboarding::about-you', array('page' => 'about-you'));
+                return Redirect::route('guest::command-center');
 
             }
         } else {
@@ -96,7 +56,8 @@ class CompanyController extends Controller
     public function commandCenter(Request $r) {
         if(Auth::check()) {
             $user_id = Auth::user()->id;
-            return view('public.pages.company.command-center');
+            $company = Companies::where('user_id', $user_id)->first();
+            return view('public.pages.company.command-center', ['company' => $company]);
         } else {
             return view('public.pages.homepage');
         }

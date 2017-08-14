@@ -8,7 +8,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="panel-title1">
-                            <h2>ABC Inc. Command Center</h2>
+                            <h2>{{$company->name}} Command Center</h2>
                             <h2><span class="glyphicon glyphicon-home"></span></h2>
                             <h2><span class="glyphicon glyphicon-alert"></span></h2>
                             <h2><span class="glyphicon glyphicon-stats"></span></h2>
@@ -73,7 +73,7 @@
                             </tbody>
                         </table>
                         <br>
-                        <a href="{{route('guest::create::about-job')}}" class="btn btn-success" role="button">Create New Job</a>
+                        {{--<a href="{{route('guest::create::about-job')}}" class="btn btn-success" role="button">Create New Job</a>--}}
                         <a href="#" class="btn btn-default" role="button">Delete</a>
                     </div>
                 </div>
@@ -174,4 +174,6 @@
         </div>
     </div>
 </div>
+    @include('public.includes.modalJob')
+    @include('public.includes.modaRanking')
 @endsection
