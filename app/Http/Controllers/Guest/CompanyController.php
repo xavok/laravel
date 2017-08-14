@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Guest;
 
-use App\User;
-use Carbon\Carbon;
+use App\Models\Company\Companies;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
@@ -12,15 +11,9 @@ use App\Models\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Seeker\SeekerProfile;
 
-class HomepageController extends Controller
+class CompanyController extends Controller
 {
-
-    public function index()
-    {
-        return view('public.pages.homepage');
-    }
 
     public function login(Request $request)
     {
@@ -44,12 +37,8 @@ class HomepageController extends Controller
             );
             // attempt to do the login
             if (Auth::attempt($userdata)) {
-                $user = Auth::user();
-                if($user['type'] === Users::USER_COMPANY) {
-                    return Redirect::to('/company/command-center');
-                } else {
-                    return Redirect::to('/profile');
-                }
+
+                return Redirect::to('/profile');
             } else {
                 // validation not successful, send back to form
                 return Redirect::to('/')
@@ -87,25 +76,29 @@ class HomepageController extends Controller
                 $password = $request->get('password');
                 $user->email = $email;
                 $user->password = Hash::make($password);
-                $user->type = Users::USER_SEEKER;
+                $user->type = Users::USER_COMPANY;
                 $user->save();
                 Auth::attempt(['email' => $email, 'password' => $password]);
 
                 //adding seeker profile for user
-                $profile = new SeekerProfile();
-                $profile->user_id = $user->id;
-                $profile->first_name = $request->get('first_name');
-                $profile->last_name = $request->get('last_name');
-                $profile->last_matched = Carbon::now();
-                $profile->should_be_matched = 0;
-                $profile->save();
+                $company = new Companies();
+                $company->user_id = $user->id;
+                $company->name = $request->get('name');
+                $company->save();
                 return Redirect::route('guest::onboarding::about-you', array('page' => 'about-you'));
 
             }
         } else {
-            return view('public.pages.register');
+            return view('public.pages.company.register');
         }
     }
 
-
+    public function commandCenter(Request $r) {
+        if(Auth::check()) {
+            $user_id = Auth::user()->id;
+            return view('public.pages.company.command-center');
+        } else {
+            return view('public.pages.homepage');
+        }
+    }
 }

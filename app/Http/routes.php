@@ -67,6 +67,7 @@ Route::group([ 'as' => 'ajax::', ], function() {
         'uses' => 'AjaxController@culturalChoices'
     ]);
 });
+//Job seeker
 Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
 
     Route::get('/', [
@@ -162,6 +163,47 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
         Route::post('/cultural', [
             'as' => 'cultural',
             'uses' => 'OnboardingController@cultural',
+        ]);
+    });
+
+});
+//Company
+Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
+
+
+    Route::post('/company/login', [
+        'as' => 'company-login',
+        'uses' => 'CompanyController@login',
+    ]);
+
+    Route::get('/logout', [
+        'as' => 'company-logout',
+        'uses' => 'CompanyController@logout',
+    ]);
+
+    Route::get('/company/register', [
+        'as' => 'company-register',
+        'uses' => 'CompanyController@register',
+    ]);
+
+    Route::post('/company/register', [
+        'as' => 'company-register-post',
+        'uses' => 'CompanyController@register',
+    ]);
+    Route::get('/company/command-center', [
+        'as' => 'command-center',
+        'uses' => 'CompanyController@commandCenter',
+    ]);
+
+    Route::group([  'prefix' => 'create', 'as' => 'create::', ], function() {
+        Route::get('/about', [
+            'as' => 'about-job',
+            'uses' => 'JobController@index',
+        ]);
+
+        Route::post('/about', [
+            'as' => 'about-job',
+            'uses' => 'JobController@index',
         ]);
     });
 

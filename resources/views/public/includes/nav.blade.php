@@ -6,9 +6,15 @@
         echo 0;
     } ?>;
 </script>
+
 <nav class="navbar">
     <div class="container-fluid-nav">
         <div>
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                </div>
+            @endif
             <ul class="nav navbar-nav">
                 <li id="logo"><a href="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg.jpg') }}"
                                                                            alt="log pic"></a>

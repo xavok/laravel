@@ -7,24 +7,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Sign Up</h4>
+                    <h4 class="modal-title">Company Sign Up</h4>
                 </div>
                 <div>
-                    <h4 class="modal-title center">Want to sign up your company?
-                    <a href="{{route('guest::company-register')}}">click here</a></h4>
+                    <h4 class="modal-title center">Want to sign up as job seeker?
+                    <a href="{{route('guest::register')}}">click here</a></h4>
                 </div>
                 <form action="#" method="post" id="signup_form">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputFirstName">First Name</label>
-                            <input class="form-control" id="first_name" name="first_name" placeholder="Enter First Name"
-                                   type="input">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputLasrName">Last Name</label>
-                            <input class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name"
-                                   type="input">
+                            <label for="exampleInputFirstName">Name</label>
+                            <input class="form-control" id="name" name="name" placeholder="Enter Company Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
