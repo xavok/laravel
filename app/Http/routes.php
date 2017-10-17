@@ -75,6 +75,19 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
         'uses' => 'HomepageController@index'
     ]);
 
+    Route::get('/about', [
+        'as' => 'about',
+        'uses' => 'HomepageController@about'
+    ]);
+    Route::get('/terms-of-service', [
+        'as' => 'terms-of-service',
+        'uses' => 'HomepageController@tos'
+    ]);
+    Route::get('/privacy-terms', [
+        'as' => 'privacy-terms',
+        'uses' => 'HomepageController@ps'
+    ]);
+
     Route::post('/login', [
         'as' => 'login',
         'uses' => 'HomepageController@login',

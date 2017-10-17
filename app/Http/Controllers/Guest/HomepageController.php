@@ -23,6 +23,17 @@ class HomepageController extends Controller
         return view('public.pages.homepage');
     }
 
+    public function about() {
+        return view('public.pages.about');
+    }
+
+    public function tos() {
+        return view('public.pages.tos');
+    }
+
+    public function ps() {
+        return view('public.pages.ps');
+    }
     public function login(Request $request)
     {
         // validate the info, create rules for the inputs

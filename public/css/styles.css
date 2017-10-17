@@ -25,14 +25,14 @@ body {
     /*background: url(../images/blurry-abstract-backgrounds-wallpapers.jpg);*/
 }
 
-header {
-    background-color: red;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    font-size: 30px;
-    text-shadow: 2px 2px 2px #FFF;
-}
+/*header {*/
+    /*background-color: red;*/
+    /*width: 100%;*/
+    /*height: 50px;*/
+    /*text-align: center;*/
+    /*font-size: 30px;*/
+    /*text-shadow: 2px 2px 2px #FFF;*/
+/*}*/
 
 hr {
     width: 70%;
@@ -274,7 +274,7 @@ Cultular
 
 .navbar {
     border-radius: 0;
-    padding: 1em;
+    /*padding: 1em;*/
 }
 
 .row {
@@ -285,9 +285,9 @@ Cultular
     background-color: white;
 }
 
-.well:hover {
-    background-color: #d3d3d3;
-}
+/*.well:hover {*/
+    /*background-color: #d3d3d3;*/
+/*}*/
 
 .well h2 {
     text-align: center;
@@ -304,8 +304,6 @@ body {
 /*}*/
 
 .footer {
-    background-color: black;
-    color: #9D9D9D;
     padding-top: 1em;
     padding-bottom: 0.5em;
     padding-left: 1em;
@@ -412,8 +410,8 @@ p {
 }
 
 .container-fluid {
-    width: 90%;
-    margin: auto;
+    /*width: 90%;*/
+    /*margin: auto;*/
 }
 
 #seeker_preference .panel-title {

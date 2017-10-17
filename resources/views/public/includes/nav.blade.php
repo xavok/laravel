@@ -7,59 +7,99 @@
     } ?>;
 </script>
 
-<nav class="navbar">
-    <div class="container-fluid-nav">
-        <div>
-            @if($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    {{$errors->first()}}
+<!-- Navbar -->
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="row" id="topNav">
+            <div class="col-sm-4">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{URL::route('guest::home')}}"><a href ="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg4.jpg') }}" id="logo" alt="logo pic"></a></a>
                 </div>
-            @endif
-            <ul class="nav navbar-nav">
-                <li id="logo"><a href="{{URL::route('guest::home')}}"><img src="{{ URL::asset('img/newLogoImg.jpg') }}"
-                                                                           alt="log pic"></a>
-                </li>
-                <?php if (Request::is('onboarding/*'))
-                { ?>
-                <li><a href="{{URL::route('guest::onboarding::about-you')}}">Personal Info</a></li>
-                <li><a href="{{URL::route('guest::onboarding::industry')}}">Industry</a></li>
-                <li><a href="{{URL::route('guest::onboarding::occupation')}}">Occupation</a></li>
-                <li><a href="{{URL::route('guest::onboarding::education')}}">Education</a></li>
-                <li><a href="{{URL::route('guest::onboarding::qualification')}}">Qualifications</a></li>
-                <li><a href="{{URL::route('guest::onboarding::cultural')}}">Culture</a></li>
-                <?php } else { ?>
-                <li><a href="{{URL::route('guest::home')}}#revolution">Hiring Revolution</a></li>
-                <li><a href="{{URL::route('guest::home')}}#seekers">Job Seekers</a></li>
-                <li><a href="{{URL::route('guest::home')}}#companies">Hiring Companies</a></li>
-                <li><a href="{{URL::route('guest::home')}}#about">About Us</a></li>
-                <li><a href="{{URL::route('guest::home')}}#contact">Contact Us</a></li>
-                <?php } ?>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if(Auth::user())
-                    <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
-                            Preferences</a></li>
-                    @if(Auth::user()->type == 'company')
-                        <li><a href="{{URL::route('guest::command-center')}}">Command Center</a></li>
+            </div>
+
+            <div class="col-sm-8">
+                <ul class="nav navbar-nav">
+                    <?php if (Request::is('onboarding/*'))
+                    { ?>
+                    <li><a href="{{URL::route('guest::onboarding::about-you')}}">Personal Info</a></li>
+                    <li><a href="{{URL::route('guest::onboarding::industry')}}">Industry</a></li>
+                    <li><a href="{{URL::route('guest::onboarding::occupation')}}">Occupation</a></li>
+                    <li><a href="{{URL::route('guest::onboarding::education')}}">Education</a></li>
+                    <li><a href="{{URL::route('guest::onboarding::qualification')}}">Qualifications</a></li>
+                    <li><a href="{{URL::route('guest::onboarding::cultural')}}">Culture</a></li>
+                    <?php } else { ?>
+                    <li class="<?php if(Request::is('/')) echo 'active'?>"><a href="{{URL::route('guest::home')}}">Home</a></li>
+                    <li><a href="{{URL::route('guest::home')}}#revolution">Hiring Revolution</a></li>
+                    <li><a href="{{URL::route('guest::home')}}#seekers">Job Seekers</a></li>
+                    <li><a href="{{URL::route('guest::home')}}#companies">Hiring Companies</a></li>
+                    <li class="<?php if(Request::is('about')) echo 'active'?>"> <a href="{{URL::route('guest::about')}}">About Us</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contact</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mailto:connect@quansissystems.com">Support</a></li>
+                            <li><a href="mailto:legal@quansissystems.com">Legal</a></li>
+                            <li><a href="mailto:webmaster@quansissystems.com">Technical</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{URL::route('guest::home')}}#opportunities">Opportunities</a></li>
+                    <?php } ?>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::user())
+                        <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
+                                Preferences</a></li>
+                        @if(Auth::user()->type == 'company')
+                            <li><a href="{{URL::route('guest::command-center')}}">Command Center</a></li>
+                        @else
+                            <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
+                        @endif
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     @else
-                        <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
+                        <li><a href="/register"><span
+                                        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin"><span
+                                        class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     @endif
-                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                @else
-                    <li><a href="/register"><span
-                                    class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin"><span
-                                    class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                @endif
-            </ul>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row" id="bottomNav">
+            <div class="col-sm-4">
+                <ul class="nav navbar-nav" id="navButtons">
+                    <li><a href="https://www.facebook.com/QuansisSystems/"><img id="navPic"
+                                                                                src="{{ URL::asset('img/facebook.png') }}"></a>
+                    </li>
+                    <li><a href="https://www.linkedin.com/company-beta/6649581/"><img id="navPic"
+                                                                                      src="{{ URL::asset('img/linkedin.png') }}"></a>
+                    </li>
+                    <li><a href="https://angel.co/quansis-systems"><img id="navPic"
+                                                                        src="{{ URL::asset('img/angel.png') }}"></a>
+                    </li>
+                    <li><a href="https://twitter.com/QuansisSystems"><img id="navPic"
+                                                                          src="{{ URL::asset('img/twitter.png') }}"></a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img id="navPic"
+                                                                                        src="{{ URL::asset('img/email.png') }}"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mailto:connect@quansissystems.com">Support</a></li>
+                            <li><a href="mailto:legal@quansissystems.com">Legal</a></li>
+                            <li><a href="mailto:webmaster@quansissystems.com">Technical</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    @if(Route::getCurrentRoute()->uri() == '/')
-        <img src="{{ URL::asset('img/newHeaderImg.jpg') }}" class="main_image" alt="background"/>
-    @endif
 </nav>
 
-
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        {{$errors->first()}}
+    </div>
+@endif
 <!-- Modal Alerts Login -->
 <div class="modal fade" id="modalLogin">
     <div class="modal-dialog">
@@ -79,7 +119,8 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input class="form-control" id="password" name="password" placeholder="Password" type="password"
+                        <input class="form-control" id="password" name="password" placeholder="Password"
+                               type="password"
                                required>
                     </div>
                     <p class="text-right"><a href="#">Forgot password?</a></p>

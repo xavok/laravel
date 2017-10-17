@@ -1,80 +1,122 @@
-.navbar-inverse .navbar-brand		{
-	color: red;
-	font-family: Impact;
-	font-size: 2em;
+.navbar-default {
+	background-color: white;
 }
 
-.navbar-inverse				{
-	color: white;
+.navbar-nav {
+	margin-top: 2em;
+
 }
 
-.navbar 		{
-	border-radius: 0;
-	padding: 1em;
+.navbar-default .navbar-nav li a {
+	color: black;
+	font-weight: bold;
+	font-size: 1em;
 }
 
-.footer 		{
-	background-color: black;
-	color: #9D9D9D;
-	padding-top: 1em;
-	padding-bottom: 0.5em;
-	padding-left: 1em;
+#bottomNav {
+	padding: 0px;
+	text-align: center;
+	margin: auto;
 }
 
-h1			{
+#topNav {
+	padding: 0px;
+	text-align: center;
+	margin: auto;
+}
+
+.navbar-header {
+	margin-left: -1.2em;
+}
+
+.carousel-inner {
+	max-width: 100%;
+	height: auto;
+}
+
+.row		{
+	padding-top: 1.5em;
+}
+
+.well		{
+	background-color: white;
+	height: auto;
+	color: black;
+}
+h2, h1			{
 	text-align: center;
 }
 
-body			{
-	width: 98%;
+body 		{
+	margin: 0 1em;
+}
+
+.imgC 			{
+	width: 60%;
+	text-align: center;
+	margin-left: 20%;
+	height: auto;
+}
+#h 			{
+	width: 100%;
+	text-align: center;
 	margin: auto;
 }
 
-.container-fluid	{
-	width: 70%;
-	margin: auto;
-}
-
-form 		{
-	width: 50%;
-	margin: auto;
-}
-
-.panel-default .panel-heading 		{
-	background-color: #3f3f3f;
+.footer 		{
+	background-color: #333;
 	color: white;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
-
 
 #revolution	{
 	height: 100%;
-	width: 70%;
+	width: 80%;
 	margin: auto;
 }
 
 #seekers 	{
 	height: 100%;
-	width: 70%;
+	width: 80%;
 	margin: auto;
 }
 
 #companies	{
 	height: 100%;
-	width: 70%;
-	margin: auto;
-}
-
-#about	 	{
-	height: 100%;
-	width: 82%;
+	width: 80%;
 	margin: auto;
 }
 
 #contact	{
 	height: 100%;
-	width: 68%;
+	width: 80%;
 	margin: auto;
 }
+
+#opportunities	{
+	height: 100%;
+	width: 80%;
+	margin: auto;
+}
+
+#logo 		{
+	width: 90%;
+	margin-top: 2em;
+	margin-left: -1em;
+}
+
+h4 			{
+	text-align: center;
+	margin: auto;
+	width: 100%;
+}
+
+.btn-block 		{
+	background-color: black;
+
+}
+
 
 .seekersH		{
 	text-align: center;
@@ -93,36 +135,139 @@ form 		{
 	text-align: center;
 }
 
-.aboutH			{
-	text-align: center;
-}
-
 .contactH		{
 	text-align: center;
 }
-.btn-block              {
-	background-color: black;
-}
-img 			{
-	width: 60%;
+
+.opportunitiesH		{
 	text-align: center;
-	margin-left: 20%;
-	height: auto;
-}
-.main_image {
-	width: 100%;
-	margin-left: 0%;
-}
-#logo img {
-	width: 100%;
-	margin-left: 0%;
-
 }
 
-a  		{
+.jumbotron		{
+	background-color: #d3d3d3;
+}
 
+.jumbotron-special 		{
+	background-color: white;
 	color: black;
 }
-.nav>li>a:focus, .nav>li>a:hover	{
+
+.slide 		{
+	background-color: #333;
+	color: white;
+	text-align: center;
+	margin: auto;
+	max-width: 100%;
+	height: auto;
+	padding: 50px;
+}
+
+h3, h2, h6			{
+	text-align: center;
+}
+
+#flashy 		{
+	max-width: 100%;
+	height: auto;
+	color: red;
+	background-color: black;
+	font-size: 2em;
+	padding: 5px 15px 5px 15px;
+}
+
+#red		{
+	color: red;
+}
+
+hr 			{
+	border: 1px solid black;
+}
+.btn-info	{
 	background-color: white;
+	color: black;
+	width: 100%;
+	text-align: center;
+}
+
+.text {
+	font-size: 3vw;
+}
+
+
+#aboutJumbo {
+	text-align: left;
+	width: 100%;
+	background-color: #333;
+	color: white;
+	letter-spacing: 0.5em;
+	background-color: #b20000;
+	font-size: 1em;
+	padding-left: 14%;
+}
+
+#aboutContent{
+	height: 100%;
+	width: 70%;
+	margin: auto;
+	letter-spacing: 0.08em;
+}
+
+#aboutContent p {
+	font-size: 1em;
+}
+
+#dark {
+	background-color: #d3d3d3;
+}
+
+h1, h2, h3{
+	font-size: 1.5em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+.imgB  {
+	max-width: 100%;
+	height: auto;
+	border: 2px solid black;
+	border-radius: 100%;
+}
+
+.modal-header{
+	background-color: #333;
+	color: white;
+}
+
+.aboutbtn {
+	background-color: #b20000;
+	color: white;
+	padding: 0.6em;
+	border-radius: 5px;
+}
+
+.modal-footer {
+	text-align: center;
+}
+
+#navPic {
+	width: 25px;
+}
+
+.panel-default .panel-heading {
+	background-color: #333;
+	color: white;
+}
+
+#panelHeading {
+	padding-bottom: 2em;
+}
+
+#agreement {
+	text-align: justify;
+}
+
+#aboutContent .panel-body {
+	height: 100%;
 }
