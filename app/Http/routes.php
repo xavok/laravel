@@ -57,6 +57,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin::' ], 
 });
 /***** PUBLIC ****/
 Route::group([ 'as' => 'ajax::', ], function() {
+
+    Route::post('ajax/login', [
+        'as' => 'login',
+        'uses' => 'AjaxController@login'
+    ]);
+
     Route::get('/occupation-types/{id}', [
         'as' => 'occupation-types',
         'uses' => 'AjaxController@occupationTypes'
@@ -111,7 +117,7 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
     Route::get('/profile', [
         'as' => 'profile',
         'uses' => 'ProfileController@index',
-    ]);
+    ])->middleware(\App\Http\Middleware\ProfileStatus::class);
 
     Route::get('/onboarding/about-you', [
         'as' => 'onboarding',

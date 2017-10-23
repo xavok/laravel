@@ -95,18 +95,17 @@
     </div>
 </nav>
 
-@if($errors->any())
-    <div class="alert alert-danger" role="alert">
-        {{$errors->first()}}
-    </div>
-@endif
+
+@include('public.includes.messages')
 <!-- Modal Alerts Login -->
 <div class="modal fade" id="modalLogin">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Log-in</h4>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="alert alert-danger login-danger hidden" role="alert">
             </div>
             <form action="/login" method="post" id="login_form">
                 {{ csrf_field() }}
@@ -127,7 +126,7 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#" data-dismiss="modal" class="btn">Close</a>
-                    <input type="submit" class="btn btn-primary" value="Log-in">
+                    <input type="submit" class="btn btn-primary" value="Login">
                 </div>
             </form>
         </div>

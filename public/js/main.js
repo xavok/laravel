@@ -8,17 +8,16 @@ $(window).load(function () {
             first_name: "required",
             last_name: "required",
             email: {
-                //checkExists: true,
                 required: true
             },
             password: {
                 required: true,
-                minlength: 5
+                minlength: 6
             },
             confirm_password: {
                 required: true,
-                minlength: 5
-                // equalTo  : "#password"
+                minlength: 6,
+                equalTo: "#password"
             }
         },
         messages: {
@@ -31,12 +30,59 @@ $(window).load(function () {
             confirm_password: {
                 required: "Please provide a password",
                 minlength: "Your password must be at least 5 characters long",
-                // equalTo  : "Please enter the same password as above"
+                equalTo: "Please make sure passwords match"
             }
         }
 
     });
 
+    $('#login_form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/login',
+            data: $(this).serialize(),
+            success: function (res) {
+                if (res['success']) {
+                    if (res['commandType']) {
+                        window.location = '/company/command-center';
+                    } else {
+                        window.location = '/profile';
+                    }
+                } else {
+                    $('.login-danger').removeClass('hidden').html('Please make sure you provide correct email/password');
+                }
+            }
+        });
+    });
+
+    if ($("#phone").val()) {
+        formatPhone();
+    }
+    $("#phone").on('keypress', function () {
+        if (event.charCode >= 48 && event.charCode <= 57) {
+            formatPhone();
+        } else {
+            return false;
+        }
+    });
+
+    function formatPhone() {
+        var output;
+        var input = $("#phone").val();
+        input = input.replace(/[^0-9]/g, '');
+        var area = input.substr(0, 3);
+        var pre = input.substr(3, 3);
+        var tel = input.substr(6, 4);
+        if (area.length < 3) {
+            output = "(" + area;
+        } else if (area.length == 3 && pre.length < 3) {
+            output = "(" + area + ")" + " " + pre;
+        } else if (area.length == 3 && pre.length == 3) {
+            output = "(" + area + ")" + " " + pre + "-" + tel;
+        }
+        $("#phone").val(output);
+    }
 
     if ($("#industry_form").length > 0) {
         $("#bar").css("width", "20%");
@@ -144,7 +190,7 @@ $(window).load(function () {
             url: '/cultural-choices/' + profile_id,
             success: function (res) {
                 for (var key in res) {
-                    if($(".culture[name=" + key + "]")) {
+                    if ($(".culture[name=" + key + "]")) {
                         $(".culture[name=" + key + "]").val(res[key]);
                     }
                 }

@@ -44,7 +44,7 @@ class OnboardingController extends Controller
             if ($request->isMethod('post')) {
                 $country_id = $request->get('country_id');
                 $zip = $request->get('zip');
-                $phone_number = $request->get('phone');
+                $phone_number = str_replace(['-','(',')',' '], '', $request->get('phone'));
                 $profile->first_name = $request->get('first_name');
                 $profile->last_name = $request->get('last_name');
                 $profile->save();
@@ -100,7 +100,7 @@ class OnboardingController extends Controller
                     $seekerIndustry = SeekerIndustry::where('id', $id)->first();
                     if (!empty($seekerIndustry)) {
                         $industry_id = $request->get('industry_id')[$i];
-                        $industry_exist = SeekerIndustry::where('id', '!=', $id)->where('industry_id', $industry_id)->first();
+                        $industry_exist = SeekerIndustry::where('id', '!=', $id)->where('industry_id', $industry_id)->where('profile_id',$profile_id)->first();
                         if (!empty($industry_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same industry more than once.');
                             return Redirect::route('guest::onboarding::industry');
@@ -143,7 +143,7 @@ class OnboardingController extends Controller
                     $seekerOccupation = SeekerOccupation::where('id', $id)->first();
                     if (!empty($seekerOccupation)) {
                         $type_id = $request->get('type')[$i];
-                        $type_exist = SeekerOccupation::where('id', '!=', $id)->where('occupation_subtype_id', $type_id)->first();
+                        $type_exist = SeekerOccupation::where('id', '!=', $id)->where('occupation_subtype_id', $type_id)->where('profile_id', $profile_id)->first();
                         if (!empty($type_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same subtype occupation more than once.');
                             return Redirect::route('guest::onboarding::occupation');
@@ -189,7 +189,7 @@ class OnboardingController extends Controller
                     $seekerEducation = SeekerEducation::where('id', $id)->first();
                     if (!empty($seekerEducation)) {
                         $school = $request->get('school')[$i];
-                        $school_exist = SeekerEducation::where('id', '!=', $id)->where('school', $school)->first();
+                        $school_exist = SeekerEducation::where('id', '!=', $id)->where('school', $school)->where('profile_id', $profile_id)->first();
                         if (!empty($school_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same school more than once.');
                             return Redirect::route('guest::onboarding::education');
@@ -238,7 +238,7 @@ class OnboardingController extends Controller
                     $seekerQualification = SeekerQualification::where('id', $id)->first();
                     if (!empty($seekerQualification)) {
                         $qualification = $request->get('qualification')[$i];
-                        $qualification_exist = SeekerQualification::where('id', '!=', $id)->where('qualification_id', $qualification)->first();
+                        $qualification_exist = SeekerQualification::where('id', '!=', $id)->where('qualification_id', $qualification)->where('profile_id', $profile_id)->first();
                         if (!empty($qualification_exist)) {
                             $request->session()->flash('alert-danger', 'You can not add same qualification more than once.');
                             return Redirect::route('guest::onboarding::education');

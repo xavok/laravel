@@ -25,5 +25,5 @@
                aria-describedby="basic-addon1">
     </div>
     <input type="hidden" name="id[]"
-           value="@if(!empty($seekerIndustry) && !empty($seekerIndustry->id)){{$seekerIndustry->id}}@endif">
+           value="@if(!empty($seekerIndustry)){{$seekerIndustry->id}}@endif">
 </div>

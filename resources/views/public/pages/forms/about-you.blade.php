@@ -40,8 +40,8 @@
             <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon  glyphicon-map-marker "
                                                                   aria-hidden="true"></span></span>
-                <input type="text" class="form-control" name="zip" placeholder="9518"
-                       aria-describedby="basic-addon1" id="zip"
+                <input type="text" class="form-control" name="zip" placeholder="11111"
+                       aria-describedby="basic-addon1" id="zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                        value="@if(!empty($address->zip)){{$address->zip}}@endif" required>
             </div>
 
@@ -49,7 +49,7 @@
             <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-phone "
                                                                   aria-hidden="true"></span></span>
-                <input type="phone" class="form-control" name="phone" placeholder="555-555-5555"
+                <input type="text" class="form-control" name="phone" placeholder="5555555555"
                        aria-describedby="basic-addon1" id="phone"
                        value="@if(!empty($phone->phone_number)){{$phone->phone_number}}@endif">
             </div>

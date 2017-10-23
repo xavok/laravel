@@ -2,6 +2,7 @@
     <div class="margin-bottom-12">
         <div class="alert alert-success">
             {{ Session::get('alert-success') }}
+            {{ Session::forget('alert-success') }}
         </div>
     </div>
 @endif
@@ -10,6 +11,7 @@
     <div class="margin-bottom-12">
         <div class="alert alert-danger">
             {{ Session::get('alert-danger') }}
+            {{ Session::forget('alert-danger') }}
         </div>
     </div>
 @endif
@@ -18,6 +20,7 @@
     <div class="margin-bottom-12">
         <div class="alert alert-warning">
             {{ Session::get('alert-warning') }}
+            {{ Session::forget('alert-warning') }}
         </div>
     </div>
 @endif
@@ -26,6 +29,7 @@
     <div class="margin-bottom-12">
         <div class="alert alert-info">
             {{ Session::get('alert-info') }}
+            {{ Session::forget('alert-info') }}
         </div>
     </div>
 @endif
