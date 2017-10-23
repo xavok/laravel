@@ -214,6 +214,16 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
             'as' => 'about-job',
             'uses' => 'JobController@index',
         ]);
+
+        Route::get('/industry', [
+            'as' => 'industry',
+            'uses' => 'JobController@industry',
+        ]);
+
+        Route::post('/industry', [
+            'as' => 'industry',
+            'uses' => 'JobController@industry',
+        ]);
     });
 
 });

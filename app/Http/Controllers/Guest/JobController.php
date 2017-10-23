@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company\Companies;
+use App\Models\Company\JobIndustry;
 use App\Models\Countries;
 use App\Models\Company\JobAddresses;
 use App\Models\Company\JobInfo;
 use App\Models\Company\JobProfile;
+use App\Models\Industries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -47,14 +49,55 @@ class JobController extends Controller
                     $job_address->zip = $zip;
                 }
                 $job_address->save();
-
-                return Redirect::route('guest::onboarding::industry');
+                $request->session()->put('job_id', $job_profile->id);
+                return Redirect::route('guest::create::industry');
             } else {
                 $countries =  Countries::orderByRaw("id='840' desc")->get();
                 return view('public.pages.company.create', [
                     'company' => $company,
                     'countries' => $countries,
                     'page' => 'about'
+                ]);
+            }
+        } else {
+            return Redirect::route('guest::home');
+        }
+    }
+
+    public function industry(Request $request)
+    {
+        if (Auth::check()) {
+            $job_id = $request->session()->get('job_id');
+            if ($request->isMethod('post')) {
+                for ($i = 0; $i < count($request->get('id')); $i++) {
+                    $id = $request->get('id')[$i];
+                    $jobIndustry = JobIndustry::where('id', $id)->first();
+                    if (!empty($jobIndustry)) {
+                        $industry_id = $request->get('industry_id')[$i];
+                        $industry_exist = JobIndustry::where('id', '!=', $id)->where('industry_id', $industry_id)->where('job_id',$job_id)->first();
+                        if (!empty($industry_exist)) {
+                            $request->session()->flash('alert-danger', 'You can not add same industry more than once.');
+                            return Redirect::route('guest::onboarding::industry');
+                        } else {
+                            $jobIndustry->industry_id = $request->get('industry_id')[$i];
+                            $jobIndustry->years = $request->get('industry_years')[$i];
+                        }
+                    } else {
+                        $jobIndustry = new JobIndustry();
+                        $jobIndustry->industry_id = $request->get('industry_id')[$i];
+                        $jobIndustry->years = $request->get('industry_years')[$i];
+                        $jobIndustry->job_id = $job_id;
+                    }
+                    $jobIndustry->save();
+                }
+                return Redirect::route('guest::onboarding::occupation');
+            } else {
+                $industries = Industries::all();
+                $jobIndustries = JobIndustry::where('job_id', $job_id)->get();
+                return view('public.pages.company.create', [
+                    'industries' => $industries,
+                    'seekerIndustries' => $jobIndustries,
+                    'page' => 'industry'
                 ]);
             }
         } else {

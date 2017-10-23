@@ -21,6 +21,10 @@ class ProfileController extends Controller
         if(Auth::check()) {
             $user_id = Auth::user()->id;
             $profile = SeekerProfile::where('user_id', $user_id)->first();
+            if($profile->should_be_matched ==0) {
+                $profile->should_be_matched=1;
+                $profile->save();
+            }
             return view('public.pages.seeker-portal', ['user' => $profile]);
         } else {
             return view('public.pages.homepage');

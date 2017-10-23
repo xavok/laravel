@@ -14,15 +14,15 @@
             @if($page == 'about')
                 @include('public.pages.forms.company.about')
             @elseif($page == 'industry')
-                @include('public.pages.forms.industry')
+                @include('public.pages.forms.company.industry')
             @elseif($page == 'occupation')
-                @include('public.pages.forms.occupation')
+                @include('public.pages.forms.company.occupation')
             @elseif($page == 'education')
-                @include('public.pages.forms.education')
+                @include('public.pages.forms.company.education')
             @elseif($page == 'qualification')
-                @include('public.pages.forms.qualification')
+                @include('public.pages.forms.company.qualification')
             @elseif($page == 'cultural')
-                @include('public.pages.forms.cultural')
+                @include('public.pages.forms.company.cultural')
             @endif
         </div>
     </div>

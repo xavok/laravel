@@ -41,14 +41,15 @@
             <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon  glyphicon-map-marker "
                                                                   aria-hidden="true"></span></span>
-                <input type="text" class="form-control" name="zip" placeholder="9518"
+                <input type="text" class="form-control" name="zip" placeholder="11111" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                        aria-describedby="basic-addon1" id="zip"
                        value="@if(!empty($address->zip)){{$address->zip}}@endif" required>
             </div>
+            <br>
             <div class="input-group">
                 <input type="checkbox" name="should_be_matched"
                        aria-describedby="basic-addon1" id="should_be_matched"
-                       value="@if(!empty($profile->should_be_matched)){{$profile->should_be_matched}}@endif">Should be matched
+                       value="@if(!empty($profile->should_be_matched)){{$profile->should_be_matched}}@endif">Start Matching Immediately
             </div>
 
             <div class=" input-group" style="width: 100%;">

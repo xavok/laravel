@@ -47,11 +47,14 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::user())
-                        <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
-                                Preferences</a></li>
+
                         @if(Auth::user()->type == 'company')
+                            <li><a href="/create/about"><span class="glyphicon glyphicon-log-in"></span>
+                                    Create Job</a></li>
                             <li><a href="{{URL::route('guest::command-center')}}">Command Center</a></li>
                         @else
+                            <li><a href="/onboarding/about-you"><span class="glyphicon glyphicon-log-in"></span>
+                                    Preferences</a></li>
                             <li><a href="{{URL::route('guest::profile')}}">Profile</a></li>
                         @endif
                         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

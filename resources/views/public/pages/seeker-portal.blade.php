@@ -85,7 +85,7 @@
                     </div>
                     <div class="panel-body">
                         <br><br>
-                        <img src="{{URL::asset('img/report.png')}}">
+{{--                        <img src="{{URL::asset('img/report.png')}}">--}}
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             <div class="col-sm-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myForum</h2>
+                        <h2 class="panel-title">My Forum</h2>
                     </div>
                     <div class="panel-body">
                         <h4>You have 5 new notifications</h4>
@@ -109,7 +109,7 @@
             <div class="col-sm-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myNetwork</h2>
+                        <h2 class="panel-title">My Network</h2>
                     </div>
                     <div class="panel-body">
                         <h4>You have 2 new requests</h4>
@@ -121,7 +121,7 @@
             <div class="col-sm-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myNews</h2>
+                        <h2 class="panel-title">My News</h2>
                     </div>
                     <div class="panel-body">
                         <h4>Todays Top Stories</h4>
