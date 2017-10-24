@@ -37,39 +37,17 @@
                             <th>Select</th>
                             <th>Job Id</th>
                             <th>Job Title</th>
-                            <th>Date</th>
+                            <th>Last Date Updated</th>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                <td><a href="#modalJob" data-toggle ="modal" data-target ="#modalJob">IT2348</a></td>
-                                <td><a href="#modalRanking" data-toggle ="modal" data-target ="#modalRanking">Senior Software Developer</a></td>
-                                <td>10-21-15 at 09:15am</td>
-                            </tr>
-                            <tr>
-                                <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                <td>32312199</td>
-                                <td><div>Lead Web Developer</div></td>
-                                <td>10-23-15 at 8:25am</td>
-                            </tr>
-                            <tr>
-                                <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                <td>22548566</td>
-                                <td>SEO Speacialist</td>
-                                <td>10-23-15 at 7:55am</td>
-                            </tr>
-                            <tr>
-                                <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                <td>39398485</td>
-                                <td>Jr. Software Engineer</td>
-                                <td>10-21-15 at 5:13pm</td>
-                            </tr>
-                            <tr>
-                                <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                <td>00202993</td>
-                                <td>Integration Engineer</td>
-                                <td>10-21-15 at 4:25pm</td>
-                            </tr>
+                            @foreach($jobs as $job)
+                                <tr>
+                                    <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
+                                    <td><a href="#modalJob" data-toggle ="modal" data-target ="#modalJob">{{$job->id}}</a></td>
+                                    <td><a href="#modalRanking" data-toggle ="modal" data-target ="#modalRanking">{{$job->name}}</a></td>
+                                    <td>{{ \Carbon\Carbon::parse($job->updated_at)->toDateTimeString()}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <br>
@@ -95,7 +73,7 @@
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myForum</h2>
+                        <h2 class="panel-title">My Forum</h2>
                     </div>
                     <div class="panel-body">
                         <h4>You have 5 new notifications</h4>
@@ -109,7 +87,7 @@
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myNetwork</h2>
+                        <h2 class="panel-title">My Network</h2>
                     </div>
                     <div class="panel-body">
                         <h4>You have 2 new requests</h4>
@@ -121,7 +99,7 @@
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">myNews</h2>
+                        <h2 class="panel-title">My News</h2>
                     </div>
                     <div class="panel-body">
                         <h4>Todays Top Stories</h4>

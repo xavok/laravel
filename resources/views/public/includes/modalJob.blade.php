@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="exampleInputFirstName">ABC Inc.</label><br>
+                    <label for="exampleInputFirstName">{{$company->name}}</label><br>
                     <label for="exampleInputFirstName">DEPT: Information Technology</label><br>
                     <label for="exampleInputFirstName">DEPT: Software Engineering</label><br>
                     <label for="exampleInputFirstName">WORK GROUP: New product engineering</label><br>

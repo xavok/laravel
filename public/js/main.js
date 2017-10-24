@@ -40,7 +40,7 @@ $(window).load(function () {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'ajax/login',
+            url: '/ajax/login',
             data: $(this).serialize(),
             success: function (res) {
                 if (res['success']) {

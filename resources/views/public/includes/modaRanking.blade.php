@@ -16,23 +16,17 @@
                     <th>Status</th>
                     </thead>
                     <tbody>
-                    <?php
-                    $a = 1;
-                    for ($i = 0; $i < 10; $i++) {
-                    ?>
-                    <tr>
-                        <td><?php echo $i++; ?></td>
-                        <td><a href="#modalCandidate" data-toggle="modal" id="candidate_<?php echo $i; ?>"
-                               data-target="#modalCandidate">124312332</a>
-                        </td>
-                        <td>100%</td>
+                    @foreach($job->ranks as $rank)
+                        <tr>
+                            <td>{{$job->id}}</td>
+                            <td><a href="#modalCandidate" data-toggle="modal" id="candidate"
+                                   data-target="#modalCandidate">{{$rank['user_id']}}</a>
+                            </td>
+                            <td>{{$rank['overall']}}%</td>
 
-                        <td>Ready</td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                    </tbody>
+                            <td>Ready</td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
             <div class="modal-footer">

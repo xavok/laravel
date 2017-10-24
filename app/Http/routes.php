@@ -224,6 +224,46 @@ Route::group([ 'namespace' => 'Guest', 'as' => 'guest::', ], function() {
             'as' => 'industry',
             'uses' => 'JobController@industry',
         ]);
+
+        Route::get('/occupation', [
+            'as' => 'occupation',
+            'uses' => 'JobController@occupation',
+        ]);
+
+        Route::post('/occupation', [
+            'as' => 'occupation',
+            'uses' => 'JobController@occupation',
+        ]);
+        Route::get('/education', [
+            'as' => 'education',
+            'uses' => 'JobController@education',
+        ]);
+
+        Route::post('/education', [
+            'as' => 'education',
+            'uses' => 'JobController@education',
+        ]);
+
+        Route::get('/qualification', [
+            'as' => 'qualification',
+            'uses' => 'JobController@qualification',
+        ]);
+
+        Route::post('/qualification', [
+            'as' => 'qualification',
+            'uses' => 'JobController@qualification',
+        ]);
+
+        Route::get('/cultural', [
+            'as' => 'cultural',
+            'uses' => 'JobController@cultural',
+        ]);
+
+        Route::post('/cultural', [
+            'as' => 'cultural',
+            'uses' => 'JobController@cultural',
+        ]);
+
     });
 
 });
