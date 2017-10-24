@@ -17,7 +17,7 @@ $(window).load(function () {
             confirm_password: {
                 required: true,
                 minlength: 6,
-                equalTo: "#password"
+                // equalTo: "#password"
             }
         },
         messages: {
@@ -30,7 +30,7 @@ $(window).load(function () {
             confirm_password: {
                 required: "Please provide a password",
                 minlength: "Your password must be at least 5 characters long",
-                equalTo: "Please make sure passwords match"
+                // equalTo: "Please make sure passwords match"
             }
         }
 
