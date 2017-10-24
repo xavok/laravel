@@ -71,10 +71,12 @@ class CompanyController extends Controller
             $user_id = Auth::user()->id;
             $company = Companies::where('user_id', $user_id)->first();
             $jobs = JobProfile::where('company_id',$company->id)->get();
-            foreach($jobs as $job) {
-                $jobinfo = JobInfo::where('job_id',$job->id)->first();
-                $job->name = $jobinfo->name;
-                $job->ranks = $this->rankJob($job->id);
+            if($jobs) {
+                foreach ($jobs as $job) {
+                    $jobinfo = JobInfo::where('job_id', $job->id)->first();
+                    $job->name = $jobinfo->name;
+                    $job->ranks = $this->rankJob($job->id);
+                }
             }
             return view('public.pages.company.command-center', ['company' => $company,'jobs'=>$jobs]);
         } else {

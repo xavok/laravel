@@ -1,5 +1,5 @@
 <!-- Modal Alert Candidate ranking -->
-<div class="modal fade" id="modalRanking">
+<div class="modal fade" id="modalRanking{{$job->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
